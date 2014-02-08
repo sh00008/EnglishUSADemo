@@ -8,10 +8,13 @@
 
 #import "ViewController.h"
 #import "LessonView.h"
+#import "AudioPlayer.h"
+
 @interface ViewController ()
 @property CycleScrollView* csView;
 @property NSMutableArray* dataArray;
 @property NSInteger buttonStatus;
+@property (nonatomic, strong) AudioPlayer* player;
 @end
 
 @implementation ViewController
@@ -20,6 +23,7 @@
 {
     [super viewDidLoad];
     self.buttonStatus = 0;
+    _player = [[AudioPlayer alloc] init];
         // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -70,6 +74,10 @@
 }
 
 - (void)clickButton {
+    NSInteger nindex = self.csView.currentPage + 3;
+    NSString* path = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/Data/Voice/0%d.mp3", nindex];
+    self.player.path = path;
+    NSTimeInterval inter = [self.player getTimeInterval];
     if (self.buttonStatus == 0) {
         self.buttonStatus = 1;
         [self.playButton setImage:[UIImage imageNamed:@"Pause.png"] forState:UIControlStateNormal];
