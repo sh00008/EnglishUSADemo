@@ -7,7 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <AVFoundation/AVFoundation.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface AudioPlayer : NSObject
 
+- (void)initializeAudio;
+
+@property (nonatomic, retain) AVAudioPlayer *player;
+@property (nonatomic, retain) NSString* path;
+
+- (void)play;
+- (void)pause;
+- (void)stop;
+- (NSTimeInterval)getTimeInterval;
 @end

@@ -29,6 +29,8 @@
 		0D250EDA18A44B540087E3D3 /* Pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D250ED718A44B540087E3D3 /* Pause.png */; };
 		0D250EDB18A44B540087E3D3 /* Play.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D250ED818A44B540087E3D3 /* Play.png */; };
 		0D250EDC18A44B540087E3D3 /* PlayHot.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D250ED918A44B540087E3D3 /* PlayHot.png */; };
+		0D4DA11B18A6103D00B31F88 /* AudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4DA11A18A6103D00B31F88 /* AudioPlayer.m */; };
+		0D4DA11D18A6105A00B31F88 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4DA11C18A6105A00B31F88 /* AudioToolbox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +74,9 @@
 		0D250ED718A44B540087E3D3 /* Pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pause.png; sourceTree = "<group>"; };
 		0D250ED818A44B540087E3D3 /* Play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Play.png; sourceTree = "<group>"; };
 		0D250ED918A44B540087E3D3 /* PlayHot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PlayHot.png; sourceTree = "<group>"; };
+		0D4DA11918A6103D00B31F88 /* AudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayer.h; sourceTree = "<group>"; };
+		0D4DA11A18A6103D00B31F88 /* AudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioPlayer.m; sourceTree = "<group>"; };
+		0D4DA11C18A6105A00B31F88 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D4DA11D18A6105A00B31F88 /* AudioToolbox.framework in Frameworks */,
 				0D250E5B189EA3520087E3D3 /* CoreGraphics.framework in Frameworks */,
 				0D250E5D189EA3520087E3D3 /* UIKit.framework in Frameworks */,
 				0D250E59189EA3520087E3D3 /* Foundation.framework in Frameworks */,
@@ -122,6 +128,7 @@
 		0D250E57189EA3520087E3D3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0D4DA11C18A6105A00B31F88 /* AudioToolbox.framework */,
 				0D250E58189EA3520087E3D3 /* Foundation.framework */,
 				0D250E5A189EA3520087E3D3 /* CoreGraphics.framework */,
 				0D250E5C189EA3520087E3D3 /* UIKit.framework */,
@@ -182,6 +189,8 @@
 				0D250ECC18A03C9F0087E3D3 /* LessonLoader.m */,
 				0D250ED118A28E050087E3D3 /* LessonView.h */,
 				0D250ED218A28E050087E3D3 /* LessonView.m */,
+				0D4DA11918A6103D00B31F88 /* AudioPlayer.h */,
+				0D4DA11A18A6103D00B31F88 /* AudioPlayer.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -319,6 +328,7 @@
 			files = (
 				0D250ED318A28E050087E3D3 /* LessonView.m in Sources */,
 				0D250EA018A02DF90087E3D3 /* CycleScrollView.m in Sources */,
+				0D4DA11B18A6103D00B31F88 /* AudioPlayer.m in Sources */,
 				0D250E72189EA3520087E3D3 /* ViewController.m in Sources */,
 				0D250E69189EA3520087E3D3 /* AppDelegate.m in Sources */,
 				0D250E65189EA3520087E3D3 /* main.m in Sources */,
