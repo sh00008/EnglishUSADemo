@@ -9,9 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface LessonView : UIView
-@property UIImageView* imageView;
-@property UILabel* srcLabel;
-@property UILabel* tranLabel;
-
+@property (atomic, strong) UIImageView* imageView;
+@property (atomic, strong) UILabel* srcLabel;
+@property (atomic, strong) UILabel* tranLabel;
+@property NSTimeInterval timeInterval;
+@property NSMutableAttributedString *attributString;
 - (void)setLessonImage:(UIImage*)image;
+- (void)startAnimation;
+- (void)pause;
 @end

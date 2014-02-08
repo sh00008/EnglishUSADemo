@@ -58,4 +58,20 @@
 }
 */
 
+- (void)startAnimation {
+        self.attributString =
+        [[NSMutableAttributedString alloc] initWithString:self.srcLabel.text];
+    NSLog([self.attributString description]);
+    [self.attributString addAttribute:NSBackgroundColorAttributeName
+              value:[UIColor greenColor]
+              range:NSMakeRange(0, self.attributString.length)];
+    
+    [self.srcLabel setAttributedText:self.attributString];
+ }
+
+- (void)pause {
+    [self.srcLabel setAttributedText:nil];
+   
+}
+
 @end

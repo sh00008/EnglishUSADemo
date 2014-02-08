@@ -74,13 +74,20 @@
 }
 
 - (void)clickButton {
-    NSInteger nindex = self.csView.currentPage + 3;
+    NSInteger nindex = [self.csView getCurrentPageIndex] + 3;
+    NSLog(@"click %d ", nindex);
     NSString* path = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/Data/Voice/0%d.mp3", nindex];
     self.player.path = path;
     NSTimeInterval inter = [self.player getTimeInterval];
+    LessonView* lessonView = (LessonView*)[self.csView getCurrentView];
+    if (lessonView != nil) {
+        lessonView.timeInterval = inter;
+    }
+    NSLog(@"%@", lessonView.srcLabel.text);
     if (self.buttonStatus == 0) {
         self.buttonStatus = 1;
         [self.playButton setImage:[UIImage imageNamed:@"Pause.png"] forState:UIControlStateNormal];
+        [lessonView startAnimation];
     } else {
         self.buttonStatus = 0;
         [_playButton setImage:[UIImage imageNamed:@"Play.png"] forState:UIControlStateNormal];

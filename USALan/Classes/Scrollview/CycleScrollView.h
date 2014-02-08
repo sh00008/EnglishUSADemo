@@ -24,7 +24,8 @@
 
 - (void)reloadData;
 - (void)setViewContent:(UIView *)view atIndex:(NSInteger)index;
-
+- (UIView*)getCurrentView;
+- (NSInteger)getCurrentPageIndex;
 @end
 
 @protocol CycleScrollViewDelegate <NSObject>

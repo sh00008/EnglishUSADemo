@@ -113,6 +113,16 @@
     }
 }
 
+- (UIView*)getCurrentView {
+    if (_curPage < [_curViews count]) {
+        return [_curViews objectAtIndex:_curPage];
+    }
+    return nil;
+}
+
+- (NSInteger)getCurrentPageIndex {
+    return _curPage;
+}
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)aScrollView {
     int x = aScrollView.contentOffset.x;

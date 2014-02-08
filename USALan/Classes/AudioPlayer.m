@@ -61,7 +61,7 @@ void interruptionListenerCallback (void *userData, UInt32 interruptionState)
     if (self.player.isPlaying) {
         [self.player pause];
     }
-    _player = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL URLWithString:p] error:nil];
+    _player = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:p] error:nil];
     [self.player prepareToPlay];
 }
 
