@@ -14,6 +14,7 @@
         _scrollView.showsHorizontalScrollIndicator = NO;
         _scrollView.contentOffset = CGPointMake(self.bounds.size.width, 0);
         _scrollView.pagingEnabled = YES;
+        _curViews = [[NSMutableArray alloc] init];
         [self addSubview:_scrollView];
         
         _curPage = 0;
@@ -38,9 +39,22 @@
 
 - (void)loadData
 {
-    
-    
-    //从scrollView上移除所有的subview
+    if (_curViews.count != 0) {
+        return;
+    }
+    _scrollView.contentSize = CGSizeMake(self.bounds.size.width * _totalPages, self.bounds.size.height);
+    for (NSInteger i = 0; i < _totalPages; i++) {
+        
+        UIView* v = [_datasource pageAtIndex:i];
+        [_curViews addObject:v];
+
+        if (v != nil) {
+            v.frame = CGRectMake(_scrollView.frame.size.width * i, _scrollView.frame.origin.y, _scrollView.frame.size.width, _scrollView.frame.size.height);
+            [_scrollView addSubview:v];
+        }
+
+    }
+    /*
     NSArray *subViews = [_scrollView subviews];
     if([subViews count] != 0) {
         [subViews makeObjectsPerformSelector:@selector(removeFromSuperview)];
@@ -61,10 +75,10 @@
         [_scrollView addSubview:v];
     }
     
-    [_scrollView setContentOffset:CGPointMake(_scrollView.frame.size.width, 0)];
+    [_scrollView setContentOffset:CGPointMake(0, 0)];*/
 }
 
-- (void)getDisplayImagesWithCurpage:(int)page {
+/*- (void)getDisplayImagesWithCurpage:(int)page {
     
     int pre = [self validPageValue:_curPage-1];
     int last = [self validPageValue:_curPage+1];
@@ -143,6 +157,38 @@
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)aScrollView {
     
     [_scrollView setContentOffset:CGPointMake(_scrollView.frame.size.width, 0) animated:YES];
+    
+}
+*/
+
+- (void)setViewContent:(UIView *)view atIndex:(NSInteger)index {
+    [_scrollView setContentOffset:CGPointMake(_scrollView.frame.size.width*index, 0) animated:YES];
+
+}
+
+- (UIView*)getCurrentView {
+    if (_currentPage < [_curViews count]) {
+        return [_curViews objectAtIndex:_currentPage];
+    }
+    
+    return nil;
+}
+
+- (NSInteger)getCurrentPageIndex {
+    return _currentPage;
+}
+
+
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)aScrollView {
+   // int x = aScrollView.contentOffset.x;
+    
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)aScrollView {
+    int x = aScrollView.contentOffset.x;
+    _currentPage = x / _scrollView.frame.size.width;
+    //[_scrollView setContentOffset:CGPointMake(_scrollView.frame.size.width, 0) animated:YES];
     
 }
 

@@ -22,7 +22,7 @@
         _srcLabel.numberOfLines = 0;
         [_srcLabel setFont:[UIFont systemFontOfSize:26]];
         _srcLabel.textAlignment = NSTextAlignmentCenter;
-        _srcLabel.backgroundColor = [UIColor clearColor];
+        _srcLabel.backgroundColor = [UIColor redColor];
         [self addSubview:_srcLabel];
         
     }
@@ -59,6 +59,11 @@
 */
 
 - (void)startAnimation {
+    CGRect f = self.srcLabel.frame;
+    CGRect rc = [self.srcLabel textRectForBounds:CGRectMake(0, 0, f.size.width, f.size.height) limitedToNumberOfLines:0];
+    UIView* b = [[UIView alloc] initWithFrame:rc];
+    b.backgroundColor = [UIColor blueColor];
+    [self.srcLabel addSubview:b];
         self.attributString =
         [[NSMutableAttributedString alloc] initWithString:self.srcLabel.text];
     NSLog([self.attributString description]);
@@ -67,6 +72,8 @@
               range:NSMakeRange(0, self.attributString.length)];
     
     [self.srcLabel setAttributedText:self.attributString];
+    [self.srcLabel setNeedsDisplay];
+    [self.srcLabel setNeedsLayout];
  }
 
 - (void)pause {
