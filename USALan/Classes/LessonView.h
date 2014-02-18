@@ -12,10 +12,11 @@
 @property (atomic, strong) UIImageView* imageView;
 @property (atomic, strong) UILabel* srcLabel;
 @property (atomic, strong) UILabel* tranLabel;
-@property (atomic, strong)UIView* b;
+@property (atomic, strong) UIView* textView;
 @property NSTimeInterval timeInterval;
 @property NSMutableAttributedString *attributString;
 - (void)setLessonImage:(UIImage*)image;
+- (void)setLessonText:(NSString*)text;
 - (void)startAnimation;
 - (void)pause;
 @end

@@ -17,13 +17,15 @@
         // Initialization code
         _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 10, frame.size.width / 2 - 20, frame.size.height - 20)];
         [self addSubview:self.imageView];
-        
-        _srcLabel = [[UILabel alloc] initWithFrame:CGRectMake(_imageView.frame.origin.x + _imageView.frame.size.width , 20, frame.size.width / 2, frame.size.height - 40)];
+        _textView = [[UIView alloc] initWithFrame:CGRectMake(_imageView.frame.origin.x + _imageView.frame.size.width , 20, frame.size.width / 2, frame.size.height - 40)];
+        _textView.backgroundColor = [UIColor clearColor];
+        [self addSubview:_textView];
+        _srcLabel = [[UILabel alloc] initWithFrame:CGRectMake(0 , 0, _textView.frame.size.width, _textView.frame.size.height)];
         _srcLabel.numberOfLines = 0;
         [_srcLabel setFont:[UIFont systemFontOfSize:26]];
         _srcLabel.textAlignment = NSTextAlignmentCenter;
-        _srcLabel.backgroundColor = [UIColor redColor];
-        [self addSubview:_srcLabel];
+        _srcLabel.backgroundColor = [UIColor clearColor];
+        [_textView addSubview:_srcLabel];
         
     }
     return self;
@@ -44,9 +46,15 @@
         CGFloat wi = flactor * self.imageView.frame.size.height;
         CGFloat he = self.imageView.frame.size.height;
         self.imageView.frame = CGRectMake(self.imageView.frame.origin.x, (self.frame.size.height - he) / 2, wi, he);
-       
     }
     self.imageView.image = image;
+}
+
+- (void)setLessonText:(NSString*)text {
+    self.srcLabel.text = text;
+    [self.srcLabel sizeToFit];
+    self.srcLabel.frame = CGRectMake((self.textView.frame.size.width - self.srcLabel.frame.size.width ) / 2, (self.textView.frame.size.height - self.srcLabel.frame.size.height ) / 2, self.srcLabel.frame.size.width, self.srcLabel.frame.size.height);
+    //self.srcLabel.center = self.textView.center;
 }
 
 /*
@@ -59,21 +67,15 @@
 */
 
 - (void)startAnimation {
-    CGRect f = self.srcLabel.frame;
-    CGRect rc = [self.srcLabel textRectForBounds:CGRectMake(0, 0, f.size.width, f.size.height) limitedToNumberOfLines:0];
-    UIView* b = [[UIView alloc] initWithFrame:rc];
-    b.backgroundColor = [UIColor blueColor];
-    [self.srcLabel addSubview:b];
-        self.attributString =
-        [[NSMutableAttributedString alloc] initWithString:self.srcLabel.text];
+    self.attributString =
+    [[NSMutableAttributedString alloc] initWithString:self.srcLabel.text];
     NSLog([self.attributString description]);
     [self.attributString addAttribute:NSBackgroundColorAttributeName
-              value:[UIColor greenColor]
-              range:NSMakeRange(0, self.attributString.length)];
+                                value:[UIColor greenColor]
+                                range:NSMakeRange(0, 5)];
     
     [self.srcLabel setAttributedText:self.attributString];
     [self.srcLabel setNeedsDisplay];
-    [self.srcLabel setNeedsLayout];
  }
 
 - (void)pause {

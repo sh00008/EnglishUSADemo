@@ -69,7 +69,7 @@
     UIImage* lessonImage = [UIImage imageWithContentsOfFile:[imagePath stringByAppendingString:@".jpg"]];
     [lessonView setLessonImage:lessonImage];
     NSString* lessonContent =  [NSString stringWithContentsOfFile:[imagePath stringByAppendingString:@".txt"] encoding: NSASCIIStringEncoding error:nil];
-    lessonView.srcLabel.text = lessonContent;
+    [lessonView setLessonText:lessonContent];
     return lessonView;
 }
 
@@ -87,6 +87,7 @@
     if (self.buttonStatus == 0) {
         self.buttonStatus = 1;
         [self.playButton setImage:[UIImage imageNamed:@"Pause.png"] forState:UIControlStateNormal];
+        
         [lessonView startAnimation];
     } else {
         self.buttonStatus = 0;
