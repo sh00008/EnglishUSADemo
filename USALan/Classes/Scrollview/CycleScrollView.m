@@ -179,6 +179,17 @@
     return _currentPage;
 }
 
+- (NSInteger)pageCount {
+    return [_curViews count];
+}
+
+- (void)scrollToNext {
+    if (_curPage < [_curViews count]) {
+        _currentPage++;
+        [_scrollView setContentOffset:CGPointMake(_scrollView.frame.size.width*_currentPage, 0) animated:YES];
+
+    }
+}
 
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)aScrollView {

@@ -85,16 +85,28 @@
         lessonView.timeInterval = inter;
     }
     NSLog(@"%@", lessonView.srcLabel.text);
-    if (self.buttonStatus == 0) {
+    if (self.buttonStatus ==
+        0) {
+        // PLAY
         self.buttonStatus = 1;
         [self.playButton setImage:[UIImage imageNamed:@"Pause.png"] forState:UIControlStateNormal];
         [self.player play];
         [lessonView startAnimation];
     } else {
+        // PAUSE
         self.buttonStatus = 0;
         [_playButton setImage:[UIImage imageNamed:@"Play.png"] forState:UIControlStateNormal];
         [_playButton setImage:[UIImage imageNamed:@"PlayHot.png"] forState:UIControlStateSelected];
         [_playButton setImage:[UIImage imageNamed:@"PlayHot.png"] forState:UIControlStateHighlighted];
+        [self.player pause];
+        [lessonView pause];
+    }
+}
+
+- (void)doNextPlay {
+    if (self.csView.currentPage < ([self.csView pageCount] - 1) ) {
+        [self.csView scrollToNext];
+        [self performSelector:@selector(clickButton) withObject:nil afterDelay:0.5];
     }
 }
 
@@ -103,6 +115,8 @@
     [_playButton setImage:[UIImage imageNamed:@"Play.png"] forState:UIControlStateNormal];
     [_playButton setImage:[UIImage imageNamed:@"PlayHot.png"] forState:UIControlStateSelected];
     [_playButton setImage:[UIImage imageNamed:@"PlayHot.png"] forState:UIControlStateHighlighted];
-}
+    [self performSelector:@selector(doNextPlay) withObject:nil afterDelay:1.0];
+
+ }
 
 @end

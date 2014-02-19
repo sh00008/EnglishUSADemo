@@ -26,9 +26,15 @@
         _srcLabel.textAlignment = NSTextAlignmentCenter;
         _srcLabel.backgroundColor = [UIColor clearColor];
         [_textView addSubview:_srcLabel];
+        self.currentPos = 0;
         
     }
     return self;
+}
+
+- (void)setTimeInterval:(NSTimeInterval)time {
+    _timeInterval = time;
+    self.dxInter = self.timeInterval / [_rangeArray count];
 }
 
 - (void)setLessonImage:(UIImage*)image {
@@ -83,16 +89,16 @@
 */
 
 - (void)startAnimation {
-    CGFloat dx =self.timeInterval / [_rangeArray count];
-    CGFloat x = 0;
-    for (NSInteger i = 0; i < [_rangeArray count]; i ++) {
-       [self performSelector:@selector(highligthPos:) withObject:[NSNumber numberWithInt:i] afterDelay:x];
-        x = x + dx;
+    CGFloat x= 0;
+    for (; self.currentPos < [_rangeArray count]; self.currentPos ++) {
+       [self performSelector:@selector(highligthPos:) withObject:[NSNumber numberWithInt:self.currentPos] afterDelay:self.currentPos];
+        x = (self.currentPos + 1) * self.dxInter;
      }
  }
 
 - (void)highligthPos:(NSNumber*)number{
     NSInteger index = [number intValue];
+    self.currentPos = index;
     if (index < [_rangeArray count]) {
        NSMutableDictionary* posDic = [_rangeArray objectAtIndex:index];
         if (posDic) {
@@ -120,6 +126,7 @@
             [self.srcLabel setNeedsDisplay];*/
             if (index == ([_rangeArray count] - 1)) {
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"didPlayNotification" object:nil];
+                self.currentPos = 0;
                 //[self.attributString removeAttribute:NSBackgroundColorAttributeName
                  //                           range:NSMakeRange(location, length)];
                 //[self.srcLabel setAttributedText:self.attributString];
@@ -142,6 +149,10 @@
     [self.srcLabel setAttributedText:self.attributString];
     [self.srcLabel setNeedsDisplay];
  
+}
+
+- (void)pause {
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
 }
 
 - (void)stop {

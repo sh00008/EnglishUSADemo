@@ -26,6 +26,8 @@
 - (void)setViewContent:(UIView *)view atIndex:(NSInteger)index;
 - (UIView*)getCurrentView;
 - (NSInteger)getCurrentPageIndex;
+- (NSInteger)pageCount;
+- (void)scrollToNext;
 @end
 
 @protocol CycleScrollViewDelegate <NSObject>

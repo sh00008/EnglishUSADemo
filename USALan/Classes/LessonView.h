@@ -15,6 +15,8 @@
 @property (atomic, strong) UIView* textView;
 @property NSTimeInterval timeInterval;
 @property (atomic, retain) NSMutableArray* rangeArray;
+@property (atomic ,assign) CGFloat dxInter;
+@property (atomic, assign) NSInteger currentPos;
 
 @property NSMutableAttributedString *attributString;
 - (void)setLessonImage:(UIImage*)image;

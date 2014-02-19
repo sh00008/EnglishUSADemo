@@ -57,17 +57,22 @@ void interruptionListenerCallback (void *userData, UInt32 interruptionState)
 }
 
 - (void)setPath:(NSString *)p {
-    _path = p;
-    if (self.player.isPlaying) {
-        [self.player pause];
+    if (![_path isEqualToString:p]) {
+        _path = p;
+        if (self.player.isPlaying) {
+            [self.player pause];
+        }
+        _player = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:p] error:nil];
+        [self.player prepareToPlay];
     }
-    _player = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:p] error:nil];
-    [self.player prepareToPlay];
 }
 
 - (void)pause {
     if (self.path == nil) {
         return;
+    }
+    if (self.player.isPlaying) {
+        [self.player pause];
     }
 
 }
@@ -76,7 +81,11 @@ void interruptionListenerCallback (void *userData, UInt32 interruptionState)
     if (self.path == nil) {
         return;
     }
-
+    
+    if (self.player.isPlaying) {
+        [self.player pause];
+    }
+    self.player = nil;
 }
 
 - (NSTimeInterval)getTimeInterval {
