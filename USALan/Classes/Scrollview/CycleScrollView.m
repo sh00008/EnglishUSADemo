@@ -35,6 +35,7 @@
         return;
     }
     [self loadData];
+    [_scrollView setContentOffset:CGPointMake(0, 0) animated:NO];
 }
 
 - (void)loadData

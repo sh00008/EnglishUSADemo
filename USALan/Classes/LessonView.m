@@ -60,7 +60,7 @@
         unichar ch = [text characterAtIndex:i];
        if ([SentenceBreaker isPunct:ch]) {
            NSInteger location = posFrom == 0 ? posFrom : (posFrom+1);
-            NSInteger length = i - posFrom ;
+            NSInteger length = i - location ;
             NSLog(@"%@", [text substringWithRange:NSMakeRange(location, length)]);
             if (length > 1) {
                 NSMutableDictionary* posDic = [[NSMutableDictionary alloc] init];
