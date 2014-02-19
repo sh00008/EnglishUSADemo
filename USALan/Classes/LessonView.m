@@ -113,13 +113,15 @@
             [self.srcLabel setNeedsDisplay];
             if (index == ([_rangeArray count] - 1)) {
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"didPlayNotification" object:nil];
-            }
+                [self.attributString removeAttribute:NSBackgroundColorAttributeName
+                                            range:NSMakeRange(location, length)];
+                [self.srcLabel setAttributedText:self.attributString];
+             }
         }
     }
 }
 
-- (void)pause {
-    [self.srcLabel setAttributedText:nil];
+- (void)stop {
    
 }
 
