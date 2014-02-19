@@ -24,7 +24,7 @@
 		0D250E87189EA3520087E3D3 /* USALanTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D250E86189EA3520087E3D3 /* USALanTests.m */; };
 		0D250EA018A02DF90087E3D3 /* CycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D250E9F18A02DF80087E3D3 /* CycleScrollView.m */; };
 		0D250ECA18A039730087E3D3 /* Data in Resources */ = {isa = PBXBuildFile; fileRef = 0D250EC918A039730087E3D3 /* Data */; };
-		0D250ECD18A03C9F0087E3D3 /* LessonLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D250ECC18A03C9F0087E3D3 /* LessonLoader.m */; };
+		0D250ECD18A03C9F0087E3D3 /* SentenceBreaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D250ECC18A03C9F0087E3D3 /* SentenceBreaker.m */; };
 		0D250ED318A28E050087E3D3 /* LessonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D250ED218A28E050087E3D3 /* LessonView.m */; };
 		0D250EDA18A44B540087E3D3 /* Pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D250ED718A44B540087E3D3 /* Pause.png */; };
 		0D250EDB18A44B540087E3D3 /* Play.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D250ED818A44B540087E3D3 /* Play.png */; };
@@ -67,8 +67,8 @@
 		0D250E9E18A02DF80087E3D3 /* CycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleScrollView.h; sourceTree = "<group>"; };
 		0D250E9F18A02DF80087E3D3 /* CycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CycleScrollView.m; sourceTree = "<group>"; };
 		0D250EC918A039730087E3D3 /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Data; sourceTree = "<group>"; };
-		0D250ECB18A03C9F0087E3D3 /* LessonLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonLoader.h; sourceTree = "<group>"; };
-		0D250ECC18A03C9F0087E3D3 /* LessonLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonLoader.m; sourceTree = "<group>"; };
+		0D250ECB18A03C9F0087E3D3 /* SentenceBreaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SentenceBreaker.h; sourceTree = "<group>"; };
+		0D250ECC18A03C9F0087E3D3 /* SentenceBreaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SentenceBreaker.m; sourceTree = "<group>"; };
 		0D250ED118A28E050087E3D3 /* LessonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonView.h; sourceTree = "<group>"; };
 		0D250ED218A28E050087E3D3 /* LessonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonView.m; sourceTree = "<group>"; };
 		0D250ED718A44B540087E3D3 /* Pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pause.png; sourceTree = "<group>"; };
@@ -185,8 +185,8 @@
 			isa = PBXGroup;
 			children = (
 				0D250E9118A02DAF0087E3D3 /* Scrollview */,
-				0D250ECB18A03C9F0087E3D3 /* LessonLoader.h */,
-				0D250ECC18A03C9F0087E3D3 /* LessonLoader.m */,
+				0D250ECB18A03C9F0087E3D3 /* SentenceBreaker.h */,
+				0D250ECC18A03C9F0087E3D3 /* SentenceBreaker.m */,
 				0D250ED118A28E050087E3D3 /* LessonView.h */,
 				0D250ED218A28E050087E3D3 /* LessonView.m */,
 				0D4DA11918A6103D00B31F88 /* AudioPlayer.h */,
@@ -332,7 +332,7 @@
 				0D250E72189EA3520087E3D3 /* ViewController.m in Sources */,
 				0D250E69189EA3520087E3D3 /* AppDelegate.m in Sources */,
 				0D250E65189EA3520087E3D3 /* main.m in Sources */,
-				0D250ECD18A03C9F0087E3D3 /* LessonLoader.m in Sources */,
+				0D250ECD18A03C9F0087E3D3 /* SentenceBreaker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

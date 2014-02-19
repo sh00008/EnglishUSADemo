@@ -7,7 +7,7 @@
 //
 
 #import "LessonView.h"
-
+#import "SentenceBreaker.h"
 @implementation LessonView
 
 - (id)initWithFrame:(CGRect)frame
@@ -54,7 +54,23 @@
     self.srcLabel.text = text;
     [self.srcLabel sizeToFit];
     self.srcLabel.frame = CGRectMake((self.textView.frame.size.width - self.srcLabel.frame.size.width ) / 2, (self.textView.frame.size.height - self.srcLabel.frame.size.height ) / 2, self.srcLabel.frame.size.width, self.srcLabel.frame.size.height);
-    //self.srcLabel.center = self.textView.center;
+    _rangeArray = [[NSMutableArray alloc] init];
+    NSInteger posFrom = 0;
+    for (NSInteger i = 0; i < text.length; i++) {
+        unichar ch = [text characterAtIndex:i];
+       if ([SentenceBreaker isPunct:ch]) {
+           NSInteger location = posFrom == 0 ? posFrom : (posFrom+1);
+            NSInteger length = i - posFrom ;
+            NSLog(@"%@", [text substringWithRange:NSMakeRange(location, length)]);
+            if (length > 1) {
+                NSMutableDictionary* posDic = [[NSMutableDictionary alloc] init];
+                [posDic setObject:[NSNumber numberWithInt:location] forKey:@"location"];
+                [posDic setObject:[NSNumber numberWithInt:length] forKey:@"length"];
+                [_rangeArray addObject:posDic];
+            }
+            posFrom = i;
+         }
+    }
 }
 
 /*
@@ -67,16 +83,37 @@
 */
 
 - (void)startAnimation {
-    self.attributString =
-    [[NSMutableAttributedString alloc] initWithString:self.srcLabel.text];
-    NSLog([self.attributString description]);
-    [self.attributString addAttribute:NSBackgroundColorAttributeName
-                                value:[UIColor greenColor]
-                                range:NSMakeRange(0, 5)];
-    
-    [self.srcLabel setAttributedText:self.attributString];
-    [self.srcLabel setNeedsDisplay];
+    CGFloat dx =self.timeInterval / [_rangeArray count];
+    CGFloat x = 0;
+    for (NSInteger i = 0; i < [_rangeArray count]; i ++) {
+       [self performSelector:@selector(highligthPos:) withObject:[NSNumber numberWithInt:i] afterDelay:x];
+        x = x + dx;
+     }
  }
+
+- (void)highligthPos:(NSNumber*)number{
+    if ([number intValue] < [_rangeArray count]) {
+        NSMutableDictionary* posDic = [_rangeArray objectAtIndex:[number intValue]];
+        if (posDic) {
+            NSInteger location = [[posDic objectForKey:@"location"] intValue];
+            NSInteger length = [[posDic objectForKey:@"length"] intValue];
+            self.attributString =
+            [[NSMutableAttributedString alloc] initWithString:self.srcLabel.text];
+            if (length < self.attributString.length  && (location < self.attributString.length)) {
+                [self.attributString addAttribute:NSBackgroundColorAttributeName
+                                            value:[UIColor greenColor]
+                                            range:NSMakeRange(location, length)];
+                if (length < self.srcLabel.text.length) {
+                    NSLog(@"highlight %@", [self.srcLabel.text substringWithRange:NSMakeRange(location, length)]);
+                }
+
+            }
+            [self.srcLabel setAttributedText:self.attributString];
+            [self.srcLabel setNeedsDisplay];
+
+        }
+    }
+}
 
 - (void)pause {
     [self.srcLabel setAttributedText:nil];

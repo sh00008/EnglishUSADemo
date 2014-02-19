@@ -14,6 +14,8 @@
 @property (atomic, strong) UILabel* tranLabel;
 @property (atomic, strong) UIView* textView;
 @property NSTimeInterval timeInterval;
+@property (atomic, retain) NSMutableArray* rangeArray;
+
 @property NSMutableAttributedString *attributString;
 - (void)setLessonImage:(UIImage*)image;
 - (void)setLessonText:(NSString*)text;

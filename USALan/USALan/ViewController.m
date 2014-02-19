@@ -87,7 +87,7 @@
     if (self.buttonStatus == 0) {
         self.buttonStatus = 1;
         [self.playButton setImage:[UIImage imageNamed:@"Pause.png"] forState:UIControlStateNormal];
-        
+        [self.player play];
         [lessonView startAnimation];
     } else {
         self.buttonStatus = 0;
