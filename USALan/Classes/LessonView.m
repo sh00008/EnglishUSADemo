@@ -94,31 +94,54 @@
 - (void)highligthPos:(NSNumber*)number{
     NSInteger index = [number intValue];
     if (index < [_rangeArray count]) {
-        NSMutableDictionary* posDic = [_rangeArray objectAtIndex:index];
+       NSMutableDictionary* posDic = [_rangeArray objectAtIndex:index];
         if (posDic) {
             NSInteger location = [[posDic objectForKey:@"location"] intValue];
             NSInteger length = [[posDic objectForKey:@"length"] intValue];
+            CGFloat dx =self.timeInterval / ([_rangeArray count] * length);
+                                             CGFloat x = 0;
+            for (NSInteger i = 1; i <= length; i++) {
+                NSMutableDictionary* singlePos = [[NSMutableDictionary alloc] initWithCapacity:2];
+                [singlePos setObject:[NSNumber numberWithInt:location] forKey:@"location"];
+                [singlePos setObject:[NSNumber numberWithInt:i] forKey:@"length"];
+                [self performSelector:@selector(addAttributToRange:) withObject:singlePos afterDelay:x];
+                x = dx;
+            }
+            /*
             self.attributString =
             [[NSMutableAttributedString alloc] initWithString:self.srcLabel.text];
             if (length < self.attributString.length  && (location < self.attributString.length)) {
                 [self.attributString addAttribute:NSBackgroundColorAttributeName
                                             value:[UIColor greenColor]
                                             range:NSMakeRange(location, length)];
-                if (length < self.srcLabel.text.length) {
-                    NSLog(@"highlight %@", [self.srcLabel.text substringWithRange:NSMakeRange(location, length)]);
-                }
 
             }
             [self.srcLabel setAttributedText:self.attributString];
-            [self.srcLabel setNeedsDisplay];
+            [self.srcLabel setNeedsDisplay];*/
             if (index == ([_rangeArray count] - 1)) {
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"didPlayNotification" object:nil];
-                [self.attributString removeAttribute:NSBackgroundColorAttributeName
-                                            range:NSMakeRange(location, length)];
-                [self.srcLabel setAttributedText:self.attributString];
+                //[self.attributString removeAttribute:NSBackgroundColorAttributeName
+                 //                           range:NSMakeRange(location, length)];
+                //[self.srcLabel setAttributedText:self.attributString];
              }
         }
     }
+}
+
+- (void)addAttributToRange:(NSMutableDictionary*)dic {
+    NSInteger location = [[dic objectForKey:@"location"] intValue];
+    NSInteger length = [[dic objectForKey:@"length"] intValue];
+    self.attributString =
+    [[NSMutableAttributedString alloc] initWithString:self.srcLabel.text];
+    if (length < self.attributString.length  && (location < self.attributString.length)) {
+        [self.attributString addAttribute:NSBackgroundColorAttributeName
+                                    value:[UIColor greenColor]
+                                    range:NSMakeRange(location, length)];
+        
+    }
+    [self.srcLabel setAttributedText:self.attributString];
+    [self.srcLabel setNeedsDisplay];
+ 
 }
 
 - (void)stop {
