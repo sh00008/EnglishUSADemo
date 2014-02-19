@@ -147,7 +147,7 @@
         
     }
     [self.srcLabel setAttributedText:self.attributString];
-    [self.srcLabel setNeedsDisplay];
+   // [self.srcLabel setNeedsDisplay];
  
 }
 
