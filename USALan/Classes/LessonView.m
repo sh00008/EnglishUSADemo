@@ -22,7 +22,7 @@
         [self addSubview:_textView];
         _srcLabel = [[UILabel alloc] initWithFrame:CGRectMake(0 , 0, _textView.frame.size.width, _textView.frame.size.height)];
         _srcLabel.numberOfLines = 0;
-        [_srcLabel setFont:[UIFont systemFontOfSize:26]];
+        [_srcLabel setFont:[UIFont systemFontOfSize:IS_IPAD ? 48 : 26]];
         _srcLabel.textAlignment = NSTextAlignmentCenter;
         _srcLabel.backgroundColor = [UIColor clearColor];
         [_textView addSubview:_srcLabel];
@@ -92,8 +92,9 @@
  }
 
 - (void)highligthPos:(NSNumber*)number{
-    if ([number intValue] < [_rangeArray count]) {
-        NSMutableDictionary* posDic = [_rangeArray objectAtIndex:[number intValue]];
+    NSInteger index = [number intValue];
+    if (index < [_rangeArray count]) {
+        NSMutableDictionary* posDic = [_rangeArray objectAtIndex:index];
         if (posDic) {
             NSInteger location = [[posDic objectForKey:@"location"] intValue];
             NSInteger length = [[posDic objectForKey:@"length"] intValue];
@@ -110,7 +111,9 @@
             }
             [self.srcLabel setAttributedText:self.attributString];
             [self.srcLabel setNeedsDisplay];
-
+            if (index == ([_rangeArray count] - 1)) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"didPlayNotification" object:nil];
+            }
         }
     }
 }

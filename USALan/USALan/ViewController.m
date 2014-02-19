@@ -44,6 +44,7 @@
         [_playButton setImage:[UIImage imageNamed:@"PlayHot.png"] forState:UIControlStateHighlighted];
         [_playButton addTarget:self action:@selector(clickButton) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:self.playButton];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPlayNotification:) name:@"didPlayNotification" object:nil];
     }
 }
 - (void)viewDidUnload
@@ -97,5 +98,11 @@
     }
 }
 
+- (void)didPlayNotification:(NSNotification*)object {
+    self.buttonStatus = 0;
+    [_playButton setImage:[UIImage imageNamed:@"Play.png"] forState:UIControlStateNormal];
+    [_playButton setImage:[UIImage imageNamed:@"PlayHot.png"] forState:UIControlStateSelected];
+    [_playButton setImage:[UIImage imageNamed:@"PlayHot.png"] forState:UIControlStateHighlighted];
+}
 
 @end
