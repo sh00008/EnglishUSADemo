@@ -17,6 +17,14 @@
         // Initialization code
         _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 10, frame.size.width / 2 - 20, frame.size.height - 20)];
         [self addSubview:self.imageView];
+        self.imageView.layer.borderColor = [[UIColor whiteColor] CGColor];
+        self.imageView.layer.borderWidth = 5.0;
+        self.imageView.layer.cornerRadius = 5.0;
+        self.imageView.layer.shadowColor = [[UIColor blackColor] CGColor];
+        self.imageView.layer.shadowOpacity = 0.6;
+        self.imageView.layer.shadowOffset = CGSizeMake(5.0, 3.0);
+        self.imageView.clipsToBounds = NO;
+        
         _textView = [[UIView alloc] initWithFrame:CGRectMake(_imageView.frame.origin.x + _imageView.frame.size.width , 20, frame.size.width / 2, frame.size.height - 40)];
         _textView.backgroundColor = [UIColor clearColor];
         [self addSubview:_textView];
@@ -142,7 +150,7 @@
     [[NSMutableAttributedString alloc] initWithString:self.srcLabel.text];
     if (length < self.attributString.length  && (location < self.attributString.length)) {
         [self.attributString addAttribute:NSBackgroundColorAttributeName
-                                    value:[UIColor greenColor]
+                                    value:[UIColor colorWithRed:232.0/255.0 green:169.0/255.0 blue:221.0 alpha:1.0]
                                     range:NSMakeRange(location, length)];
         
     }

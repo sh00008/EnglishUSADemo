@@ -15,6 +15,8 @@
         _scrollView.contentOffset = CGPointMake(self.bounds.size.width, 0);
         _scrollView.pagingEnabled = YES;
         _curViews = [[NSMutableArray alloc] init];
+        _scrollView.backgroundColor = [UIColor clearColor];
+        self.backgroundColor = [UIColor clearColor];
         [self addSubview:_scrollView];
         
         _curPage = 0;
