@@ -30,7 +30,7 @@
         [self addSubview:_textView];
         _srcLabel = [[UILabel alloc] initWithFrame:CGRectMake(0 , 0, _textView.frame.size.width, _textView.frame.size.height)];
         _srcLabel.numberOfLines = 0;
-        [_srcLabel setFont:[UIFont systemFontOfSize:IS_IPAD ? 48 : 26]];
+        [_srcLabel setFont:[UIFont fontWithName:@"Helvetica" size:IS_IPAD ? 48 : 26]];
         _srcLabel.textAlignment = NSTextAlignmentCenter;
         _srcLabel.backgroundColor = [UIColor clearColor];
         [_textView addSubview:_srcLabel];
