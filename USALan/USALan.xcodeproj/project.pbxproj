@@ -31,6 +31,12 @@
 		0D250EDC18A44B540087E3D3 /* PlayHot.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D250ED918A44B540087E3D3 /* PlayHot.png */; };
 		0D4DA11B18A6103D00B31F88 /* AudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4DA11A18A6103D00B31F88 /* AudioPlayer.m */; };
 		0D4DA11D18A6105A00B31F88 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4DA11C18A6105A00B31F88 /* AudioToolbox.framework */; };
+		0DAC5DEF18D611D3003C6E30 /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0DAC5DE518D611D3003C6E30 /* MJRefresh.bundle */; };
+		0DAC5DF018D611D3003C6E30 /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAC5DE818D611D3003C6E30 /* MJRefreshBaseView.m */; };
+		0DAC5DF118D611D3003C6E30 /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAC5DEA18D611D3003C6E30 /* MJRefreshConst.m */; };
+		0DAC5DF218D611D3003C6E30 /* MJRefreshFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAC5DEC18D611D3003C6E30 /* MJRefreshFooterView.m */; };
+		0DAC5DF318D611D3003C6E30 /* MJRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAC5DEE18D611D3003C6E30 /* MJRefreshHeaderView.m */; };
+		0DAC5DF618D6125C003C6E30 /* ThumbViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAC5DF518D6125C003C6E30 /* ThumbViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +83,18 @@
 		0D4DA11918A6103D00B31F88 /* AudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayer.h; sourceTree = "<group>"; };
 		0D4DA11A18A6103D00B31F88 /* AudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioPlayer.m; sourceTree = "<group>"; };
 		0D4DA11C18A6105A00B31F88 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		0DAC5DE518D611D3003C6E30 /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
+		0DAC5DE618D611D3003C6E30 /* MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefresh.h; sourceTree = "<group>"; };
+		0DAC5DE718D611D3003C6E30 /* MJRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBaseView.h; sourceTree = "<group>"; };
+		0DAC5DE818D611D3003C6E30 /* MJRefreshBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshBaseView.m; sourceTree = "<group>"; };
+		0DAC5DE918D611D3003C6E30 /* MJRefreshConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshConst.h; sourceTree = "<group>"; };
+		0DAC5DEA18D611D3003C6E30 /* MJRefreshConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshConst.m; sourceTree = "<group>"; };
+		0DAC5DEB18D611D3003C6E30 /* MJRefreshFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshFooterView.h; sourceTree = "<group>"; };
+		0DAC5DEC18D611D3003C6E30 /* MJRefreshFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshFooterView.m; sourceTree = "<group>"; };
+		0DAC5DED18D611D3003C6E30 /* MJRefreshHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshHeaderView.h; sourceTree = "<group>"; };
+		0DAC5DEE18D611D3003C6E30 /* MJRefreshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshHeaderView.m; sourceTree = "<group>"; };
+		0DAC5DF418D6125C003C6E30 /* ThumbViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThumbViewController.h; sourceTree = "<group>"; };
+		0DAC5DF518D6125C003C6E30 /* ThumbViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThumbViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +202,7 @@
 		0D250E9018A02DAF0087E3D3 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0DAC5DE418D611D3003C6E30 /* MJRefresh */,
 				0D250E9118A02DAF0087E3D3 /* Scrollview */,
 				0D250ECB18A03C9F0087E3D3 /* SentenceBreaker.h */,
 				0D250ECC18A03C9F0087E3D3 /* SentenceBreaker.m */,
@@ -191,6 +210,8 @@
 				0D250ED218A28E050087E3D3 /* LessonView.m */,
 				0D4DA11918A6103D00B31F88 /* AudioPlayer.h */,
 				0D4DA11A18A6103D00B31F88 /* AudioPlayer.m */,
+				0DAC5DF418D6125C003C6E30 /* ThumbViewController.h */,
+				0DAC5DF518D6125C003C6E30 /* ThumbViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -222,6 +243,23 @@
 				0D250ED918A44B540087E3D3 /* PlayHot.png */,
 			);
 			path = Image;
+			sourceTree = "<group>";
+		};
+		0DAC5DE418D611D3003C6E30 /* MJRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				0DAC5DE518D611D3003C6E30 /* MJRefresh.bundle */,
+				0DAC5DE618D611D3003C6E30 /* MJRefresh.h */,
+				0DAC5DE718D611D3003C6E30 /* MJRefreshBaseView.h */,
+				0DAC5DE818D611D3003C6E30 /* MJRefreshBaseView.m */,
+				0DAC5DE918D611D3003C6E30 /* MJRefreshConst.h */,
+				0DAC5DEA18D611D3003C6E30 /* MJRefreshConst.m */,
+				0DAC5DEB18D611D3003C6E30 /* MJRefreshFooterView.h */,
+				0DAC5DEC18D611D3003C6E30 /* MJRefreshFooterView.m */,
+				0DAC5DED18D611D3003C6E30 /* MJRefreshHeaderView.h */,
+				0DAC5DEE18D611D3003C6E30 /* MJRefreshHeaderView.m */,
+			);
+			path = MJRefresh;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,6 +346,7 @@
 				0D250E6C189EA3520087E3D3 /* Main_iPhone.storyboard in Resources */,
 				0D250E63189EA3520087E3D3 /* InfoPlist.strings in Resources */,
 				0D250EDC18A44B540087E3D3 /* PlayHot.png in Resources */,
+				0DAC5DEF18D611D3003C6E30 /* MJRefresh.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,8 +367,13 @@
 			files = (
 				0D250ED318A28E050087E3D3 /* LessonView.m in Sources */,
 				0D250EA018A02DF90087E3D3 /* CycleScrollView.m in Sources */,
+				0DAC5DF318D611D3003C6E30 /* MJRefreshHeaderView.m in Sources */,
+				0DAC5DF618D6125C003C6E30 /* ThumbViewController.m in Sources */,
+				0DAC5DF218D611D3003C6E30 /* MJRefreshFooterView.m in Sources */,
+				0DAC5DF018D611D3003C6E30 /* MJRefreshBaseView.m in Sources */,
 				0D4DA11B18A6103D00B31F88 /* AudioPlayer.m in Sources */,
 				0D250E72189EA3520087E3D3 /* ViewController.m in Sources */,
+				0DAC5DF118D611D3003C6E30 /* MJRefreshConst.m in Sources */,
 				0D250E69189EA3520087E3D3 /* AppDelegate.m in Sources */,
 				0D250E65189EA3520087E3D3 /* main.m in Sources */,
 				0D250ECD18A03C9F0087E3D3 /* SentenceBreaker.m in Sources */,
