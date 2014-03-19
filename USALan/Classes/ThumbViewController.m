@@ -7,7 +7,7 @@
 //
 
 #import "ThumbViewController.h"
-
+#import "ViewController.h"
 NSString *const MJCollectionViewCellIdentifier = @"Cell";
 
 #import "MJRefresh.h"
@@ -150,6 +150,10 @@ NSString *const MJCollectionViewCellIdentifier = @"Cell";
     return cell;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    ViewController* nextViewController = [[ViewController alloc] init];
+    [self.navigationController pushViewController:nextViewController animated:YES];
+}
 /**
  为了保证内部不泄露，在dealloc中释放占用的内存
  */

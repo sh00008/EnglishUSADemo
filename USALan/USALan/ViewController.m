@@ -32,7 +32,7 @@
         UIInterfaceOrientation or = [self interfaceOrientation];// [[UIDevice currentDevice] orientation];
         CGRect f = [[UIScreen mainScreen] bounds];
         CGRect rc =  UIInterfaceOrientationIsPortrait(or)? CGRectMake(0, 0, f.size.width, f.size.height) :  CGRectMake(0, 0, f.size.height, f.size.width);
-        _csView = [[CycleScrollView alloc] initWithFrame:rc];
+        _csView = [[CycleScrollView alloc] initWithFrame:CGRectMake(0, 64, rc.size.width, rc.size.height - 64)];
         _csView.delegate = self;
         _csView.datasource = self;
         [self.view addSubview:_csView];
@@ -66,7 +66,7 @@
 
 - (UIView *)pageAtIndex:(NSInteger)index
 {
-    LessonView* lessonView = [[LessonView alloc] initWithFrame:self.csView.frame];
+    LessonView* lessonView = [[LessonView alloc] initWithFrame:CGRectMake(0, 0, self.csView.frame.size.width, self.csView.frame.size.height)];
     NSString* imagePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/Data/Text/0%d", index+3];
     UIImage* lessonImage = [UIImage imageWithContentsOfFile:[imagePath stringByAppendingString:@".jpg"]];
     [lessonView setLessonImage:lessonImage];

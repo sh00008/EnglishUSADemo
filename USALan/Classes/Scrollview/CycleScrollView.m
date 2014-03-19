@@ -8,10 +8,12 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        _scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
+        _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
         _scrollView.delegate = self;
-        _scrollView.contentSize = CGSizeMake(self.bounds.size.width * 3, self.bounds.size.height);
+        _scrollView.contentSize = CGSizeMake(frame.size.width * 3, frame.size.height);
         _scrollView.showsHorizontalScrollIndicator = NO;
+        _scrollView.showsVerticalScrollIndicator = NO;
+        _scrollView.alwaysBounceVertical = NO;
         _scrollView.contentOffset = CGPointMake(self.bounds.size.width, 0);
         _scrollView.pagingEnabled = YES;
         _curViews = [[NSMutableArray alloc] init];
