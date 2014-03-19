@@ -7,11 +7,19 @@
 //
 
 #import "AppDelegate.h"
-
+#import "ThumbViewController.h"
 @implementation AppDelegate
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    ThumbViewController* thumb =  [[ThumbViewController alloc] init];
+
+    UINavigationController* navi = [[UINavigationController alloc] initWithRootViewController:thumb];
+    _window.rootViewController = navi;
+    [_window makeKeyAndVisible];
+    
     // Override point for customization after application launch.
     return YES;
 }

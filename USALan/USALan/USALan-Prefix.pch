@@ -15,3 +15,4 @@
     #import <Foundation/Foundation.h>
 #endif
 #define IS_IPAD	([[UIDevice currentDevice] respondsToSelector:@selector(userInterfaceIdiom)] && [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+#define MAINVIEWTITLESTRING @"美国小学语文"

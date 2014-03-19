@@ -17,6 +17,7 @@ NSString *const MJCollectionViewCellIdentifier = @"Cell";
     NSMutableArray *_fakeColor;
     MJRefreshHeaderView *_header;
     MJRefreshFooterView *_footer;
+    NSMutableArray* _dataArray;
 }
 @end
 
@@ -32,20 +33,35 @@ NSString *const MJCollectionViewCellIdentifier = @"Cell";
     return [self initWithCollectionViewLayout:layout];
 }
 
+- (void)loadThumImage {
+    NSString* imagePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"%@", @"/Data/Text/"];
+    
+	_dataArray = [[NSMutableArray alloc] init];
+	NSFileManager *manager = [NSFileManager defaultManager];
+	NSDirectoryEnumerator *dirEnum = [manager enumeratorAtPath:imagePath];
+	NSString* file = nil;
+	while (file = [dirEnum nextObject]) {
+		if ([[[file pathExtension] lowercaseString] isEqualToString:@"jpg"]) {
+            [_dataArray addObject:[imagePath stringByAppendingFormat:@"/%@",file]];
+        }
+			
+	}
+
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    self.title = MAINVIEWTITLESTRING;
+   
     // 1.注册
     self.collectionView.backgroundColor = [UIColor whiteColor];
     self.collectionView.alwaysBounceVertical = YES;
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:MJCollectionViewCellIdentifier];
-    
+    [self loadThumImage];
     // 2.假数据
     _fakeColor = [NSMutableArray array];
-    for (int i = 0; i<5; i++) {
-        // 添加随机色
-        [_fakeColor addObject:[UIColor colorWithRed:arc4random_uniform(255)/255.0 green:arc4random_uniform(255)/255.0 blue:arc4random_uniform(255)/255.0 alpha:1]];
+    if ([_dataArray count] > 15) {
+        [_fakeColor addObjectsFromArray:[_dataArray subarrayWithRange:NSMakeRange(0, 15)]];
     }
     
     // 3.集成刷新控件
@@ -80,14 +96,10 @@ NSString *const MJCollectionViewCellIdentifier = @"Cell";
     NSLog(@"%@----开始进入刷新状态", refreshView.class);
     
     // 1.添加假数据
-    for (int i = 0; i<5; i++) {
-        UIColor *color = [UIColor colorWithRed:arc4random_uniform(255)/255.0 green:arc4random_uniform(255)/255.0 blue:arc4random_uniform(255)/255.0 alpha:1];
-        
-        if ([refreshView isKindOfClass:[MJRefreshHeaderView class]]) {
-            [_fakeColor insertObject:color atIndex:0];
-        } else {
-            [_fakeColor addObject:color];
-        }
+    if ([_fakeColor count] < [_dataArray count]) {
+        NSInteger subCount = _dataArray.count - _fakeColor.count;
+        subCount = subCount > 15 ? 15 : subCount;
+        [_fakeColor addObjectsFromArray:[_dataArray subarrayWithRange:NSMakeRange((_fakeColor.count - 1), subCount)]];
     }
     
     // 2.2秒后刷新表格UI
@@ -125,7 +137,16 @@ NSString *const MJCollectionViewCellIdentifier = @"Cell";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:MJCollectionViewCellIdentifier forIndexPath:indexPath];
-    cell.backgroundColor = _fakeColor[indexPath.row];
+    NSString* path = _fakeColor[indexPath.row];
+    UIImage* image = [UIImage imageWithContentsOfFile:path];
+    UIImageView* subView = (UIImageView*)[cell.contentView viewWithTag:102];
+    if (subView == nil) {
+        subView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 80, 80)];
+        [cell.contentView addSubview:subView];
+        subView.tag = 102;
+
+    }
+    subView.image = image;
     return cell;
 }
 
