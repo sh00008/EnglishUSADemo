@@ -32,7 +32,7 @@
         UIInterfaceOrientation or = [self interfaceOrientation];// [[UIDevice currentDevice] orientation];
         CGRect f = [[UIScreen mainScreen] bounds];
         CGRect rc =  UIInterfaceOrientationIsPortrait(or)? CGRectMake(0, 0, f.size.width, f.size.height) :  CGRectMake(0, 0, f.size.height, f.size.width);
-        _csView = [[CycleScrollView alloc] initWithFrame:CGRectMake(0, 64, rc.size.width, rc.size.height - 64)];
+        _csView = [[CycleScrollView alloc] initWithFrame:CGRectMake(0, 0, rc.size.width, rc.size.height)];
         _csView.delegate = self;
         _csView.datasource = self;
         [self.view addSubview:_csView];

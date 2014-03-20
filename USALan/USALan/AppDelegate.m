@@ -15,9 +15,7 @@
 {
     _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     ThumbViewController* thumb =  [[ThumbViewController alloc] init];
-
-    UINavigationController* navi = [[UINavigationController alloc] initWithRootViewController:thumb];
-    _window.rootViewController = navi;
+     _window.rootViewController = thumb;
     [_window makeKeyAndVisible];
     
     // Override point for customization after application launch.
