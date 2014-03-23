@@ -15,6 +15,8 @@
 @property NSMutableArray* dataArray;
 @property NSInteger buttonStatus;
 @property (nonatomic, strong) AudioPlayer* player;
+@property (nonatomic, strong) UIButton* backButton;
+@property (nonatomic, strong) UILabel* pageNumberLabel;
 @end
 
 @implementation ViewController
@@ -37,6 +39,15 @@
         _csView.datasource = self;
         [self.view addSubview:_csView];
         self.csView = _csView;
+        self.csView.currentPage = self.currentNumber;
+        [self.csView reloadData];
+        _backButton = [[UIButton alloc] initWithFrame:CGRectMake(2, 20, 64, 64)];
+        UIImage* im = [UIImage imageNamed:@"Play.png"];
+        im = [UIImage imageWithCGImage:[im CGImage] scale:im.scale orientation:UIImageOrientationDown];
+        [_backButton setImage:im forState:UIControlStateNormal];
+        [_backButton addTarget:self action:@selector(backToThumb) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:self.backButton];
+        
         
         _playButton = [[UIButton alloc] initWithFrame:CGRectMake(rc.size.width - 72, rc.size.height - 72, 64, 64)];
         [_playButton setImage:[UIImage imageNamed:@"Play.png"] forState:UIControlStateNormal];
@@ -44,6 +55,13 @@
         [_playButton setImage:[UIImage imageNamed:@"PlayHot.png"] forState:UIControlStateHighlighted];
         [_playButton addTarget:self action:@selector(clickButton) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:self.playButton];
+        
+        _pageNumberLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, rc.size.height - 44, rc.size.width, 44)];
+        _pageNumberLabel.backgroundColor = [UIColor clearColor];
+        _pageNumberLabel.text = [NSString stringWithFormat:@"%d / %d", self.totalCount, self.currentNumber];
+        _pageNumberLabel.textAlignment = NSTextAlignmentCenter;
+        [self.view addSubview:self.pageNumberLabel];
+        
         self.view.backgroundColor = [UIColor colorWithRed:152.0/255.0 green:209.0/255.0 blue:240.0/255.0 alpha:1.0];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPlayNotification:) name:@"didPlayNotification" object:nil];
     }
@@ -61,13 +79,33 @@
 
 - (NSInteger)numberOfPages
 {
-    return 4;
+    return self.totalCount;
 }
 
 - (UIView *)pageAtIndex:(NSInteger)index
 {
     LessonView* lessonView = [[LessonView alloc] initWithFrame:CGRectMake(0, 0, self.csView.frame.size.width, self.csView.frame.size.height)];
-    NSString* imagePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/Data/Text/0%d", index+3];
+    NSString* imagePath = nil;
+    switch (index) {
+        case 0:
+        {
+            NSInteger i = self.currentNumber - 1;
+            imagePath = [self.delegate getPreviousDataPathWithOutSuffix:i];
+        }
+            break;
+        case 1:
+            imagePath = self.pagePath;
+            break;
+        case 2:
+        {
+            NSInteger i = self.currentNumber - 1;
+            imagePath = [self.delegate getNextDataPathWithOutSuffix:i];
+        }
+            break;
+            
+        default:
+            break;
+    }
     UIImage* lessonImage = [UIImage imageWithContentsOfFile:[imagePath stringByAppendingString:@".jpg"]];
     [lessonView setLessonImage:lessonImage];
     NSString* lessonContent =  [NSString stringWithContentsOfFile:[imagePath stringByAppendingString:@".txt"] encoding: NSASCIIStringEncoding error:nil];
@@ -75,40 +113,59 @@
     return lessonView;
 }
 
-- (void)clickButton {
-    NSInteger nindex = [self.csView getCurrentPageIndex] + 3;
-    NSLog(@"click %d ", nindex);
-    NSString* path = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/Data/Voice/0%d.mp3", nindex];
-    self.player.path = path;
-    NSTimeInterval inter = [self.player getTimeInterval];
-    LessonView* lessonView = (LessonView*)[self.csView getCurrentView];
-    if (lessonView != nil) {
-        lessonView.timeInterval = inter;
+- (void)didTurnPage:(NSInteger)page {
+    if (page == 0 && self.currentNumber != 1) {
+        self.currentNumber--;
     }
-    NSLog(@"%@", lessonView.srcLabel.text);
-    if (self.buttonStatus ==
-        0) {
-        // PLAY
-        self.buttonStatus = 1;
-        [self.playButton setImage:[UIImage imageNamed:@"Pause.png"] forState:UIControlStateNormal];
-        [self.player play];
-        [lessonView startAnimation];
-    } else {
-        // PAUSE
-        self.buttonStatus = 0;
-        [_playButton setImage:[UIImage imageNamed:@"Play.png"] forState:UIControlStateNormal];
-        [_playButton setImage:[UIImage imageNamed:@"PlayHot.png"] forState:UIControlStateSelected];
-        [_playButton setImage:[UIImage imageNamed:@"PlayHot.png"] forState:UIControlStateHighlighted];
-        [self.player pause];
-        [lessonView pause];
+    
+    if (page == 2 && self.currentNumber != self.totalCount) {
+        self.currentNumber++;
     }
 }
 
+- (void)backToThumb {
+    [self dismissViewControllerAnimated:YES completion:^(void ) {}];
+}
+
+- (void)clickButton {
+    NSRange r = [self.pagePath rangeOfString:@"Text" options:NSBackwardsSearch];
+    if (r.location != NSNotFound) {
+        NSString* path = [self.pagePath substringToIndex:r.location];
+        NSString* file = [self.pagePath substringFromIndex:(r.location + r.length)];
+        path = [self.pagePath stringByAppendingFormat:@"%@/Voice/%@",file, @".mp3"];
+        self.player.path = path;
+        NSTimeInterval inter = [self.player getTimeInterval];
+        LessonView* lessonView = (LessonView*)[self.csView getCurrentView];
+        if (lessonView != nil) {
+            lessonView.timeInterval = inter;
+        }
+        NSLog(@"%@", lessonView.srcLabel.text);
+        if (self.buttonStatus ==
+            0) {
+            // PLAY
+            self.buttonStatus = 1;
+            [self.playButton setImage:[UIImage imageNamed:@"Pause.png"] forState:UIControlStateNormal];
+            [self.player play];
+            [lessonView startAnimation];
+        } else {
+            // PAUSE
+            self.buttonStatus = 0;
+            [_playButton setImage:[UIImage imageNamed:@"Play.png"] forState:UIControlStateNormal];
+            [_playButton setImage:[UIImage imageNamed:@"PlayHot.png"] forState:UIControlStateSelected];
+            [_playButton setImage:[UIImage imageNamed:@"PlayHot.png"] forState:UIControlStateHighlighted];
+            [self.player pause];
+            [lessonView pause];
+        }
+    }
+   
+}
+
 - (void)doNextPlay {
-    if (self.csView.currentPage < ([self.csView pageCount] - 1) ) {
+    if (self.currentNumber != self.totalCount) {
         [self.csView scrollToNext];
         [self performSelector:@selector(clickButton) withObject:nil afterDelay:0.5];
     }
+
 }
 
 - (void)didPlayNotification:(NSNotification*)object {

@@ -8,6 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "CycleScrollView.h"
+
+@protocol ViewControllerDelegate <NSObject>
+
+- (NSString*)getPreviousDataPathWithOutSuffix:(NSInteger)fromPage;
+- (NSString*)getNextDataPathWithOutSuffix:(NSInteger)fromPage;
+
+@end
+
 @interface ViewController : UIViewController<CycleScrollViewDatasource,CycleScrollViewDelegate>
 @property (nonatomic, strong) UIButton* playButton;
+@property (nonatomic) NSInteger totalCount;
+@property (nonatomic) NSInteger currentNumber;
+@property (nonatomic, retain) NSString* pagePath;
+@property (nonatomic) id<ViewControllerDelegate> delegate;
 @end

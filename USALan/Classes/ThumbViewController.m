@@ -19,6 +19,7 @@ NSString *const MJCollectionViewCellIdentifier = @"Cell";
     MJRefreshFooterView *_footer;
     NSMutableArray* _dataArray;
 }
+
 @end
 
 @implementation ThumbViewController
@@ -42,7 +43,11 @@ NSString *const MJCollectionViewCellIdentifier = @"Cell";
 	NSString* file = nil;
 	while (file = [dirEnum nextObject]) {
 		if ([[[file pathExtension] lowercaseString] isEqualToString:@"jpg"]) {
-            [_dataArray addObject:[imagePath stringByAppendingFormat:@"/%@",file]];
+            NSRange r = [file rangeOfString:@"." options:NSBackwardsSearch];
+            if (r.location != NSNotFound) {
+                NSString* pathWithOutsuffix = [file substringToIndex:r.location];
+                [_dataArray addObject:[imagePath stringByAppendingFormat:@"/%@",pathWithOutsuffix]];
+            }
         }
 			
 	}
@@ -142,6 +147,7 @@ NSString *const MJCollectionViewCellIdentifier = @"Cell";
 {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:MJCollectionViewCellIdentifier forIndexPath:indexPath];
     NSString* path = _fakeColor[indexPath.row];
+    path = [path stringByAppendingFormat:@"%@", @".jpg"];
     UIImage* image = [UIImage imageWithContentsOfFile:path];
     UIImageView* subView = (UIImageView*)[cell.contentView viewWithTag:102];
     if (subView == nil) {
@@ -156,12 +162,34 @@ NSString *const MJCollectionViewCellIdentifier = @"Cell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     ViewController* nextViewController = [[ViewController alloc] init];
+    nextViewController.totalCount = [_dataArray count];
+    nextViewController.currentNumber = indexPath.row+1;
+    nextViewController.pagePath = [_dataArray objectAtIndex:indexPath.row];
+    nextViewController.delegate = (id)self;
     [nextViewController setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
-   [self presentViewController:nextViewController animated:YES completion:^{}];
+    [self presentViewController:nextViewController animated:YES completion:^{}];
 }
 /**
  为了保证内部不泄露，在dealloc中释放占用的内存
  */
+
+- (NSString*)getPreviousDataPathWithOutSuffix:(NSInteger)fromPage {
+    NSInteger page = fromPage - 1;
+    if (page < _dataArray.count && page > 0) {
+        return [_dataArray objectAtIndex:page];
+    }
+    return nil;
+}
+
+- (NSString*)getNextDataPathWithOutSuffix:(NSInteger)fromPage {
+    NSInteger page = fromPage + 1;
+    if (page < _dataArray.count) {
+        return [_dataArray objectAtIndex:page];
+    }
+    return nil;
+}
+
+
 - (void)dealloc
 {
     NSLog(@"MJCollectionViewController--dealloc---");

@@ -25,8 +25,6 @@
 - (void)reloadData;
 - (void)setViewContent:(UIView *)view atIndex:(NSInteger)index;
 - (UIView*)getCurrentView;
-- (NSInteger)getCurrentPageIndex;
-- (NSInteger)pageCount;
 - (void)scrollToNext;
 @end
 
@@ -42,5 +40,5 @@
 @required
 - (NSInteger)numberOfPages;
 - (UIView *)pageAtIndex:(NSInteger)index;
-
+- (void)didTurnPage:(NSInteger)page;
 @end
