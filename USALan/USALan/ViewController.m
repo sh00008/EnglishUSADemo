@@ -58,7 +58,7 @@
         
         _pageNumberLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, rc.size.height - 44, rc.size.width, 44)];
         _pageNumberLabel.backgroundColor = [UIColor clearColor];
-        _pageNumberLabel.text = [NSString stringWithFormat:@"%d / %d", self.totalCount, self.currentNumber];
+        _pageNumberLabel.text = [NSString stringWithFormat:@"%d / %d", self.currentNumber, self.totalCount];
         _pageNumberLabel.textAlignment = NSTextAlignmentCenter;
         [self.view addSubview:self.pageNumberLabel];
         
@@ -84,6 +84,18 @@
 
 - (UIView *)pageAtIndex:(NSInteger)index
 {
+    if (index == 0) {
+        if (self.currentNumber - 2 < 0) {
+            return nil;
+        }
+    }
+    
+    if (index == 2) {
+        if (self.currentNumber + 1 > self.totalCount) {
+            return nil;
+        }
+
+    }
     LessonView* lessonView = [[LessonView alloc] initWithFrame:CGRectMake(0, 0, self.csView.frame.size.width, self.csView.frame.size.height)];
     NSString* imagePath = nil;
     switch (index) {
@@ -98,7 +110,7 @@
             break;
         case 2:
         {
-            NSInteger i = self.currentNumber - 1;
+            NSInteger i = self.currentNumber +1;
             imagePath = [self.delegate getNextDataPathWithOutSuffix:i];
         }
             break;
@@ -116,11 +128,11 @@
 - (void)didTurnPage:(NSInteger)page {
     if (page == 0 && self.currentNumber != 1) {
         self.currentNumber--;
-    }
+       _pageNumberLabel.text = [NSString stringWithFormat:@"%d / %d", self.currentNumber, self.totalCount];    }
     
     if (page == 2 && self.currentNumber != self.totalCount) {
         self.currentNumber++;
-    }
+        _pageNumberLabel.text = [NSString stringWithFormat:@"%d / %d", self.currentNumber, self.totalCount];   }
 }
 
 - (void)backToThumb {
