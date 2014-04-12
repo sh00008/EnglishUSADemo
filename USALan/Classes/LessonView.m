@@ -54,11 +54,15 @@
         CGFloat flactor = sz.height / sz.width;
         CGFloat he = flactor * self.imageView.frame.size.width;
         CGFloat wi = self.imageView.frame.size.width;
+        he = MIN(he, self.frame.size.height/2 - 40);
+        wi = MIN(wi, self.frame.size.width/2 - 40);
         self.imageView.frame = CGRectMake(self.imageView.frame.origin.x, (self.frame.size.height - he) / 2, wi, he);
     } else {
         CGFloat flactor = sz.width / sz.height;
         CGFloat wi = flactor * self.imageView.frame.size.height;
         CGFloat he = self.imageView.frame.size.height;
+        he = MIN(he, self.frame.size.height/2 - 40);
+        wi = MIN(wi, self.frame.size.width/2 - 40);
         self.imageView.frame = CGRectMake(self.imageView.frame.origin.x, (self.frame.size.height - he) / 2, wi, he);
     }
     self.imageView.image = image;

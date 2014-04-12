@@ -85,7 +85,7 @@
 - (UIView *)pageAtIndex:(NSInteger)index
 {
     if (index == 0) {
-        if (self.currentNumber - 2 < 0) {
+        if (self.currentNumber - 1 < 0) {
             return nil;
         }
     }

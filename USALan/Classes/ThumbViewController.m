@@ -11,6 +11,9 @@
 NSString *const MJCollectionViewCellIdentifier = @"Cell";
 
 #import "MJRefresh.h"
+#define COUNTPERPAGE IS_IPAD ? 50 : 15
+#define SIZEPERPAGE IS_IPAD ? 120 :80
+#define EDGEPERPAGE IS_IPAD ? UIEdgeInsetsMake(50, 40, 40,40) :UIEdgeInsetsMake(30, 20, 20,20)
 
 @interface ThumbViewController () <MJRefreshBaseViewDelegate>
 {
@@ -27,8 +30,9 @@ NSString *const MJCollectionViewCellIdentifier = @"Cell";
 - (id)init
 {
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    layout.itemSize = CGSizeMake(80, 80);
-    layout.sectionInset = UIEdgeInsetsMake(20, 20, 20, 20);
+ 
+    layout.itemSize = CGSizeMake(SIZEPERPAGE, SIZEPERPAGE);
+    layout.sectionInset = EDGEPERPAGE;
     layout.minimumInteritemSpacing = 20;
     layout.minimumLineSpacing = 20;
     return [self initWithCollectionViewLayout:layout];
@@ -56,17 +60,18 @@ NSString *const MJCollectionViewCellIdentifier = @"Cell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = MAINVIEWTITLESTRING;
+   self.title = MAINVIEWTITLESTRING;
    
     // 1.注册
     self.collectionView.backgroundColor = [UIColor whiteColor];
+    self.collectionView.backgroundColor = [UIColor colorWithRed:152.0/255.0 green:209.0/255.0 blue:240.0/255.0 alpha:1.0];
     self.collectionView.alwaysBounceVertical = YES;
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:MJCollectionViewCellIdentifier];
     [self loadThumImage];
     // 2.假数据
     _fakeColor = [NSMutableArray array];
     if (_dataArray.count > 0) {
-        NSInteger count = _dataArray.count > 15 ? 15 : _dataArray.count;
+        NSInteger count = MIN([_dataArray count], COUNTPERPAGE);
         [_fakeColor addObjectsFromArray:[_dataArray subarrayWithRange:NSMakeRange(0, count)]];
     }
 
@@ -107,7 +112,7 @@ NSString *const MJCollectionViewCellIdentifier = @"Cell";
     // 1.添加假数据
     if ([_fakeColor count] < [_dataArray count] && _fakeColor.count > 0) {
         NSInteger subCount = _dataArray.count - _fakeColor.count;
-        subCount = subCount > 15 ? 15 : subCount;
+        subCount = MIN(subCount, COUNTPERPAGE);
         [_fakeColor addObjectsFromArray:[_dataArray subarrayWithRange:NSMakeRange((_fakeColor.count - 1), subCount)]];
     }
     
@@ -150,14 +155,25 @@ NSString *const MJCollectionViewCellIdentifier = @"Cell";
     path = [path stringByAppendingFormat:@"%@", @".jpg"];
     UIImage* image = [UIImage imageWithContentsOfFile:path];
     UIImageView* subView = (UIImageView*)[cell.contentView viewWithTag:102];
+    UILabel* lab = (UILabel*)[cell.contentView viewWithTag:103];
     if (subView == nil) {
-        subView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 80, 80)];
+        subView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SIZEPERPAGE, SIZEPERPAGE)];
         [cell.contentView addSubview:subView];
         subView.tag = 102;
-
+        subView.layer.borderColor = [[UIColor whiteColor] CGColor];
+        subView.layer.borderWidth = 3.0;
+        lab = [[UILabel alloc] initWithFrame:CGRectMake(0, subView.frame.size.height + 2, SIZEPERPAGE, 20)];
+        [cell.contentView addSubview:lab];
+        lab.tag = 103;
+        lab.backgroundColor = [UIColor clearColor];
+        lab.textAlignment = NSTextAlignmentCenter;
+        lab.textColor = [UIColor darkGrayColor];
+        
     }
+    
     subView.image = image;
-    return cell;
+    lab.text = [NSString stringWithFormat:@"第%d课", indexPath.row + 1];
+   return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
