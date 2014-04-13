@@ -11,8 +11,8 @@
 NSString *const MJCollectionViewCellIdentifier = @"Cell";
 
 #import "MJRefresh.h"
-#define COUNTPERPAGE IS_IPAD ? 200 : 15
-#define SIZEPERPAGE IS_IPAD ? 40 :80
+#define COUNTPERPAGE IS_IPAD ? 20 : 15
+#define SIZEPERPAGE IS_IPAD ? 160 :80
 #define EDGEPERPAGE IS_IPAD ? UIEdgeInsetsMake(50, 40, 40,40) :UIEdgeInsetsMake(30, 20, 20,20)
 
 @interface ThumbViewController () <MJRefreshBaseViewDelegate>
@@ -162,7 +162,7 @@ NSString *const MJCollectionViewCellIdentifier = @"Cell";
         subView.tag = 102;
         subView.layer.borderColor = [[UIColor whiteColor] CGColor];
         subView.layer.borderWidth = 3.0;
-        lab = [[UILabel alloc] initWithFrame:CGRectMake(0, subView.frame.size.height + 2, SIZEPERPAGE, 20)];
+        lab = [[UILabel alloc] initWithFrame:CGRectMake(0, subView.frame.size.height , SIZEPERPAGE, 20)];
         [cell.contentView addSubview:lab];
         lab.tag = 103;
         lab.backgroundColor = [UIColor clearColor];
@@ -173,6 +173,7 @@ NSString *const MJCollectionViewCellIdentifier = @"Cell";
     
     subView.image = image;
     lab.text = [NSString stringWithFormat:@"第%d课", indexPath.row + 1];
+    lab.font = [UIFont systemFontOfSize:IS_IPAD? 14:10];
    return cell;
 }
 
