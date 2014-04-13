@@ -9,7 +9,8 @@
 #import "ViewController.h"
 #import "LessonView.h"
 #import "AudioPlayer.h"
-
+#define SIZEOFBUTTON (IS_IPAD ? 128 : 72)
+#define BUTTONOFFSET (IS_IPAD ? 20 : 0)
 @interface ViewController ()
 @property CycleScrollView* csView;
 @property NSMutableArray* dataArray;
@@ -41,18 +42,15 @@
         self.csView = _csView;
         self.csView.currentPage = self.currentNumber;
         [self.csView reloadData];
-        _backButton = [[UIButton alloc] initWithFrame:CGRectMake(2, 20, 64, 64)];
-        UIImage* im = [UIImage imageNamed:@"Play.png"];
-        im = [UIImage imageWithCGImage:[im CGImage] scale:im.scale orientation:UIImageOrientationDown];
+        _backButton = [[UIButton alloc] initWithFrame:CGRectMake(2, 20, SIZEOFBUTTON, SIZEOFBUTTON)];
+        UIImage* im = [UIImage imageNamed:@"back.png"];
         [_backButton setImage:im forState:UIControlStateNormal];
         [_backButton addTarget:self action:@selector(backToThumb) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:self.backButton];
         
         
-        _playButton = [[UIButton alloc] initWithFrame:CGRectMake(rc.size.width - 72, rc.size.height - 72, 64, 64)];
-        [_playButton setImage:[UIImage imageNamed:@"Play.png"] forState:UIControlStateNormal];
-        [_playButton setImage:[UIImage imageNamed:@"PlayHot.png"] forState:UIControlStateSelected];
-        [_playButton setImage:[UIImage imageNamed:@"PlayHot.png"] forState:UIControlStateHighlighted];
+        _playButton = [[UIButton alloc] initWithFrame:CGRectMake(rc.size.width - (SIZEOFBUTTON + BUTTONOFFSET), rc.size.height - (SIZEOFBUTTON + BUTTONOFFSET), SIZEOFBUTTON, SIZEOFBUTTON)];
+        [_playButton setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
         [_playButton addTarget:self action:@selector(clickButton) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:self.playButton];
         
@@ -211,16 +209,14 @@
             0) {
             // PLAY
             self.buttonStatus = 1;
-            [self.playButton setImage:[UIImage imageNamed:@"Pause.png"] forState:UIControlStateNormal];
+            [self.playButton setImage:[UIImage imageNamed:@"pause.png"] forState:UIControlStateNormal];
             [self.player play];
             [lessonView startAnimation];
         } else {
             // PAUSE
             self.buttonStatus = 0;
-            [_playButton setImage:[UIImage imageNamed:@"Play.png"] forState:UIControlStateNormal];
-            [_playButton setImage:[UIImage imageNamed:@"PlayHot.png"] forState:UIControlStateSelected];
-            [_playButton setImage:[UIImage imageNamed:@"PlayHot.png"] forState:UIControlStateHighlighted];
-            [self.player pause];
+            [_playButton setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
+             [self.player pause];
             [lessonView pause];
         }
    
