@@ -26,9 +26,9 @@
 		0D250ECA18A039730087E3D3 /* Data in Resources */ = {isa = PBXBuildFile; fileRef = 0D250EC918A039730087E3D3 /* Data */; };
 		0D250ECD18A03C9F0087E3D3 /* SentenceBreaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D250ECC18A03C9F0087E3D3 /* SentenceBreaker.m */; };
 		0D250ED318A28E050087E3D3 /* LessonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D250ED218A28E050087E3D3 /* LessonView.m */; };
-		0D250EDA18A44B540087E3D3 /* Pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D250ED718A44B540087E3D3 /* Pause.png */; };
-		0D250EDB18A44B540087E3D3 /* Play.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D250ED818A44B540087E3D3 /* Play.png */; };
-		0D250EDC18A44B540087E3D3 /* PlayHot.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D250ED918A44B540087E3D3 /* PlayHot.png */; };
+		0D446C1D18FA708D00A0F6B2 /* Pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D446C1A18FA708C00A0F6B2 /* Pause.png */; };
+		0D446C1E18FA708D00A0F6B2 /* Play.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D446C1B18FA708C00A0F6B2 /* Play.png */; };
+		0D446C1F18FA708D00A0F6B2 /* PlayHot.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D446C1C18FA708C00A0F6B2 /* PlayHot.png */; };
 		0D4DA11B18A6103D00B31F88 /* AudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4DA11A18A6103D00B31F88 /* AudioPlayer.m */; };
 		0D4DA11D18A6105A00B31F88 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4DA11C18A6105A00B31F88 /* AudioToolbox.framework */; };
 		0DAC5DEF18D611D3003C6E30 /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0DAC5DE518D611D3003C6E30 /* MJRefresh.bundle */; };
@@ -77,9 +77,9 @@
 		0D250ECC18A03C9F0087E3D3 /* SentenceBreaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SentenceBreaker.m; sourceTree = "<group>"; };
 		0D250ED118A28E050087E3D3 /* LessonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonView.h; sourceTree = "<group>"; };
 		0D250ED218A28E050087E3D3 /* LessonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonView.m; sourceTree = "<group>"; };
-		0D250ED718A44B540087E3D3 /* Pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pause.png; sourceTree = "<group>"; };
-		0D250ED818A44B540087E3D3 /* Play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Play.png; sourceTree = "<group>"; };
-		0D250ED918A44B540087E3D3 /* PlayHot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PlayHot.png; sourceTree = "<group>"; };
+		0D446C1A18FA708C00A0F6B2 /* Pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Pause.png; path = USALan/Resource/AppImage/Pause.png; sourceTree = SOURCE_ROOT; };
+		0D446C1B18FA708C00A0F6B2 /* Play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Play.png; path = USALan/Resource/AppImage/Play.png; sourceTree = SOURCE_ROOT; };
+		0D446C1C18FA708C00A0F6B2 /* PlayHot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PlayHot.png; path = USALan/Resource/AppImage/PlayHot.png; sourceTree = SOURCE_ROOT; };
 		0D4DA11918A6103D00B31F88 /* AudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayer.h; sourceTree = "<group>"; };
 		0D4DA11A18A6103D00B31F88 /* AudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioPlayer.m; sourceTree = "<group>"; };
 		0D4DA11C18A6105A00B31F88 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -228,20 +228,21 @@
 		0D250EA118A0395F0087E3D3 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				0D250ED618A44B540087E3D3 /* Image */,
+				0D250ED618A44B540087E3D3 /* AppImage */,
 				0D250EC918A039730087E3D3 /* Data */,
 			);
 			name = Resource;
 			path = USALan/Resource;
 			sourceTree = "<group>";
 		};
-		0D250ED618A44B540087E3D3 /* Image */ = {
+		0D250ED618A44B540087E3D3 /* AppImage */ = {
 			isa = PBXGroup;
 			children = (
-				0D250ED718A44B540087E3D3 /* Pause.png */,
-				0D250ED818A44B540087E3D3 /* Play.png */,
-				0D250ED918A44B540087E3D3 /* PlayHot.png */,
+				0D446C1A18FA708C00A0F6B2 /* Pause.png */,
+				0D446C1B18FA708C00A0F6B2 /* Play.png */,
+				0D446C1C18FA708C00A0F6B2 /* PlayHot.png */,
 			);
+			name = AppImage;
 			path = Image;
 			sourceTree = "<group>";
 		};
@@ -338,15 +339,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D250EDA18A44B540087E3D3 /* Pause.png in Resources */,
 				0D250E6F189EA3520087E3D3 /* Main_iPad.storyboard in Resources */,
+				0D446C1E18FA708D00A0F6B2 /* Play.png in Resources */,
 				0D250E74189EA3520087E3D3 /* Images.xcassets in Resources */,
 				0D250ECA18A039730087E3D3 /* Data in Resources */,
-				0D250EDB18A44B540087E3D3 /* Play.png in Resources */,
+				0D446C1F18FA708D00A0F6B2 /* PlayHot.png in Resources */,
 				0D250E6C189EA3520087E3D3 /* Main_iPhone.storyboard in Resources */,
 				0D250E63189EA3520087E3D3 /* InfoPlist.strings in Resources */,
-				0D250EDC18A44B540087E3D3 /* PlayHot.png in Resources */,
 				0DAC5DEF18D611D3003C6E30 /* MJRefresh.bundle in Resources */,
+				0D446C1D18FA708D00A0F6B2 /* Pause.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

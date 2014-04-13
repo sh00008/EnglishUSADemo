@@ -11,11 +11,7 @@
 @implementation AudioPlayer
 void interruptionListenerCallback (void *userData, UInt32 interruptionState)
 {
-	/*MDAudioPlayerController *vc = (MDAudioPlayerController *)userData;
-	if (interruptionState == kAudioSessionBeginInterruption)
-		vc.interrupted = YES;
-	else if (interruptionState == kAudioSessionEndInterruption)
-		vc.interrupted = NO;*/
+	NSLog(@"interruptionListenerCallback");
 }
 
 

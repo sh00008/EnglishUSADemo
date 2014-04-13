@@ -85,7 +85,7 @@
 - (UIView *)pageAtIndex:(NSInteger)index
 {
     if (index == 0) {
-        if (self.currentNumber - 1 < 0) {
+        if (self.currentNumber - 1 <= 0) {
             return nil;
         }
     }
@@ -102,16 +102,16 @@
         case 0:
         {
             NSInteger i = self.currentNumber - 1;
-            imagePath = [self.delegate getPreviousDataPathWithOutSuffix:i];
+            imagePath = [self.delegate getDataPathWithOutSuffix:i];
         }
             break;
         case 1:
-            imagePath = self.pagePath;
+            imagePath = [self.delegate getDataPathWithOutSuffix:self.currentNumber];
             break;
         case 2:
         {
             NSInteger i = self.currentNumber +1;
-            imagePath = [self.delegate getNextDataPathWithOutSuffix:i];
+            imagePath = [self.delegate getDataPathWithOutSuffix:i];
         }
             break;
             
@@ -120,9 +120,33 @@
     }
     UIImage* lessonImage = [UIImage imageWithContentsOfFile:[imagePath stringByAppendingString:@".jpg"]];
     [lessonView setLessonImage:lessonImage];
-    NSString* lessonContent =  [NSString stringWithContentsOfFile:[imagePath stringByAppendingString:@".txt"] encoding: NSASCIIStringEncoding error:nil];
-    [lessonView setLessonText:lessonContent];
-    return lessonView;
+    if (IS_SAME) {
+        NSString* lessonContent =  [NSString stringWithContentsOfFile:[imagePath stringByAppendingString:@".txt"] encoding: NSASCIIStringEncoding error:nil];
+        [lessonView setLessonText:lessonContent];
+        
+    } else {
+        NSRange range = [imagePath rangeOfString:@"/" options:NSBackwardsSearch];
+        if (range.location != NSNotFound) {
+            NSString* filename = [imagePath substringFromIndex:range.location+1];
+            NSRange headerrange = [filename rangeOfString:HEADERSTRING];
+            if (headerrange.location != NSNotFound) {
+                NSString* textName = [filename substringFromIndex:headerrange.location+headerrange.length];
+                NSRange chRange = [textName rangeOfString:@"-"];
+                if (chRange.location != NSNotFound) {
+                    NSInteger first = [[textName substringToIndex:chRange.location] integerValue];
+                    NSInteger second = [[textName substringFromIndex:(chRange.location+1)] integerValue];
+                    NSString* textfilename = [NSString stringWithFormat:@"%d-%d", first - RLATIONOFFSET, second + RLATIONOFFSET];
+                    NSString* textPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"%@", @"/Data/Text/"];
+                    
+                    NSString* lessonContent =  [NSString stringWithContentsOfFile:[textPath stringByAppendingFormat:@"%@.txt", textfilename] encoding: NSASCIIStringEncoding error:nil];
+                    [lessonView setLessonText:lessonContent];
+                    
+                }
+            }
+        }
+        
+    }
+   return lessonView;
 }
 
 - (void)didTurnPage:(NSInteger)page {
@@ -135,17 +159,48 @@
         _pageNumberLabel.text = [NSString stringWithFormat:@"%d / %d", self.currentNumber, self.totalCount];   }
 }
 
+- (BOOL)firstPage {
+    return self.currentNumber == 1;
+}
+
+- (BOOL)lastPage {
+    return self.currentNumber == self.totalCount;
+}
+
 - (void)backToThumb {
     [self dismissViewControllerAnimated:YES completion:^(void ) {}];
 }
 
 - (void)clickButton {
-    NSRange r = [self.pagePath rangeOfString:@"Text" options:NSBackwardsSearch];
-    if (r.location != NSNotFound) {
-        NSString* path = [self.pagePath substringToIndex:r.location];
-        NSString* file = [self.pagePath substringFromIndex:(r.location + r.length)];
-        path = [self.pagePath stringByAppendingFormat:@"%@/Voice/%@",file, @".mp3"];
+   self.pagePath = [self.delegate getDataPathWithOutSuffix:self.currentNumber];
+    if (IS_SAME) {
+        NSString* path =  [NSString stringWithContentsOfFile:[self.pagePath stringByAppendingString:@".mp3"] encoding: NSASCIIStringEncoding error:nil];
         self.player.path = path;
+       
+    } else {
+        NSRange range = [self.pagePath rangeOfString:@"/" options:NSBackwardsSearch];
+        if (range.location != NSNotFound) {
+            NSString* filename = [self.pagePath substringFromIndex:range.location+1];
+            NSRange headerrange = [filename rangeOfString:HEADERSTRING];
+            if (headerrange.location != NSNotFound) {
+                NSString* textName = [filename substringFromIndex:headerrange.location+headerrange.length];
+                NSRange chRange = [textName rangeOfString:@"-"];
+                if (chRange.location != NSNotFound) {
+                    NSInteger first = [[textName substringToIndex:chRange.location] integerValue];
+                    NSInteger second = [[textName substringFromIndex:(chRange.location+1)] integerValue];
+                    NSString* textfilename = [NSString stringWithFormat:@"%d-%d", first - RLATIONOFFSET, second + RLATIONOFFSET];
+                    NSString* textPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"%@", @"/Data/Voice/"];
+                    NSString* path = [textPath stringByAppendingFormat:@"%@.mp3", textfilename];
+                    self.player.path = path;
+                    
+                }
+            }
+        }
+        
+    }
+    if (self.player.path == nil) {
+        return;
+    }
         NSTimeInterval inter = [self.player getTimeInterval];
         LessonView* lessonView = (LessonView*)[self.csView getCurrentView];
         if (lessonView != nil) {
@@ -168,7 +223,6 @@
             [self.player pause];
             [lessonView pause];
         }
-    }
    
 }
 

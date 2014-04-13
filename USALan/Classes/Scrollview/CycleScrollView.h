@@ -23,7 +23,7 @@
 @property (nonatomic,assign,setter = setDelegate:) id<CycleScrollViewDelegate> delegate;
 
 - (void)reloadData;
-- (void)setViewContent:(UIView *)view atIndex:(NSInteger)index;
+- (void)setViewContentAtIndex:(NSInteger)index animated:(BOOL)animated;
 - (UIView*)getCurrentView;
 - (void)scrollToNext;
 @end
@@ -41,4 +41,6 @@
 - (NSInteger)numberOfPages;
 - (UIView *)pageAtIndex:(NSInteger)index;
 - (void)didTurnPage:(NSInteger)page;
+- (BOOL)firstPage;
+- (BOOL)lastPage;
 @end

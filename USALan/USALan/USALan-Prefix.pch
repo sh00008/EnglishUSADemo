@@ -16,3 +16,6 @@
 #endif
 #define IS_IPAD	([[UIDevice currentDevice] respondsToSelector:@selector(userInterfaceIdiom)] && [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
 #define MAINVIEWTITLESTRING @"美国小学语文"
+#define HEADERSTRING @"book1-"
+#define RLATIONOFFSET 1
+#define IS_SAME 0

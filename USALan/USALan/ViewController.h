@@ -11,8 +11,7 @@
 
 @protocol ViewControllerDelegate <NSObject>
 
-- (NSString*)getPreviousDataPathWithOutSuffix:(NSInteger)fromPage;
-- (NSString*)getNextDataPathWithOutSuffix:(NSInteger)fromPage;
+- (NSString*)getDataPathWithOutSuffix:(NSInteger)fromPage;
 
 @end
 

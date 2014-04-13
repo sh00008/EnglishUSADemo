@@ -11,8 +11,8 @@
 NSString *const MJCollectionViewCellIdentifier = @"Cell";
 
 #import "MJRefresh.h"
-#define COUNTPERPAGE IS_IPAD ? 50 : 15
-#define SIZEPERPAGE IS_IPAD ? 120 :80
+#define COUNTPERPAGE IS_IPAD ? 200 : 15
+#define SIZEPERPAGE IS_IPAD ? 40 :80
 #define EDGEPERPAGE IS_IPAD ? UIEdgeInsetsMake(50, 40, 40,40) :UIEdgeInsetsMake(30, 20, 20,20)
 
 @interface ThumbViewController () <MJRefreshBaseViewDelegate>
@@ -39,7 +39,7 @@ NSString *const MJCollectionViewCellIdentifier = @"Cell";
 }
 
 - (void)loadThumImage {
-    NSString* imagePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"%@", @"/Data/Text/"];
+    NSString* imagePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"%@", @"/Data/Image/"];
     
 	_dataArray = [[NSMutableArray alloc] init];
 	NSFileManager *manager = [NSFileManager defaultManager];
@@ -189,17 +189,9 @@ NSString *const MJCollectionViewCellIdentifier = @"Cell";
  为了保证内部不泄露，在dealloc中释放占用的内存
  */
 
-- (NSString*)getPreviousDataPathWithOutSuffix:(NSInteger)fromPage {
+- (NSString*)getDataPathWithOutSuffix:(NSInteger)fromPage {
     NSInteger page = fromPage - 1;
-    if (page < _dataArray.count && page > 0) {
-        return [_dataArray objectAtIndex:page];
-    }
-    return nil;
-}
-
-- (NSString*)getNextDataPathWithOutSuffix:(NSInteger)fromPage {
-    NSInteger page = fromPage + 1;
-    if (page < _dataArray.count) {
+    if (page < _dataArray.count && page >= 0) {
         return [_dataArray objectAtIndex:page];
     }
     return nil;
