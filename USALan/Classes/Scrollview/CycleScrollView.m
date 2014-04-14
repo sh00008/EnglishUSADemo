@@ -143,17 +143,50 @@
     return nil;
 }
 
-- (void)scrollToNext {
-    _currentPage++;
-    [_scrollView setContentOffset:CGPointMake(_scrollView.frame.size.width*_currentPage, 0) animated:YES];
-    int x = _scrollView.contentOffset.x;
-    _currentPage = x / _scrollView.frame.size.width;
-    [_datasource didTurnPage:_currentPage];
-    if (_currentPage == 2) {
-        [self setNextPage];
-    } else if (_currentPage == 0) {
-        [self setPreviousPage];
+- (void)scrollToPrevious{
+    if ([_datasource firstPage]) {
+        return;
     }
+    
+    [UIView animateWithDuration:0.6f
+                          delay:0.0f
+                        options:UIViewAnimationOptionCurveEaseOut
+                     animations:^{
+                         // Do your animations here.
+                         [_scrollView setContentOffset:CGPointMake(_scrollView.frame.size.width, 0) animated:NO];
+                    }
+                     completion:^(BOOL finished){
+                         if (finished) {
+                             // Do your method here after your animation.
+                             _currentPage = 0;
+                             [self setPreviousPage];
+                             [_datasource didTurnPage:_currentPage];
+                         }
+                     }];
+    
+ }
+
+- (void)scrollToNext {
+    if ([_datasource lastPage]) {
+        return;
+    }
+    [UIView animateWithDuration:0.6f
+                          delay:0.0f
+                        options:UIViewAnimationOptionCurveEaseOut
+                     animations:^{
+                         // Do your animations here.
+                         [_scrollView setContentOffset:CGPointMake(_scrollView.frame.size.width*2, 0) animated:NO];
+                     }
+                     completion:^(BOOL finished){
+                         if (finished) {
+                             // Do your method here after your animation.
+                             _currentPage = 2;
+                             [self setNextPage];
+                             [_datasource didTurnPage:_currentPage];
+                         }
+                     }];
+    
+
 }
 
 - (void)setNextPage {
@@ -176,9 +209,15 @@
         [_scrollView addSubview:newView];
         newView.frame = CGRectMake(current.frame.origin.x + 2*current.frame.size.width, 0, newView.frame.size.width, newView.frame.size.height);
         newView.tag = KNEXT;
+        _scrollView.contentSize = CGSizeMake(current.frame.size.width * 3, current.frame.size.height);
+        [_scrollView setContentOffset:CGPointMake(current.frame.size.width, 0)];
+    
+    } else {
+        _scrollView.contentSize = CGSizeMake(current.frame.size.width * 2, current.frame.size.height);
+        [_scrollView setContentOffset:CGPointMake(current.frame.size.width, 0)];
+        
     }
     
-    [_scrollView setContentOffset:CGPointMake(current.frame.size.width, 0)];
   
 }
 
@@ -231,12 +270,12 @@
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)aScrollView {
     int x = aScrollView.contentOffset.x;
     _currentPage = x / _scrollView.frame.size.width;
-    [_datasource didTurnPage:_currentPage];
     if (_currentPage == 2) {
         [self setNextPage];
     } else if (_currentPage == 0) {
         [self setPreviousPage];
     }
+    [_datasource didTurnPage:_currentPage];
     //[_scrollView setContentOffset:CGPointMake(_scrollView.frame.size.width, 0) animated:YES];
     
 }

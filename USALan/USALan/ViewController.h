@@ -17,6 +17,8 @@
 
 @interface ViewController : UIViewController<CycleScrollViewDatasource,CycleScrollViewDelegate>
 @property (nonatomic, strong) UIButton* playButton;
+@property (nonatomic, strong) UIButton* previousButton;
+@property (nonatomic, strong) UIButton* nextButton;
 @property (nonatomic) NSInteger totalCount;
 @property (nonatomic) NSInteger currentNumber;
 @property (nonatomic, retain) NSString* pagePath;

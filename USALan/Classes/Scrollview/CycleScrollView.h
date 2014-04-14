@@ -25,6 +25,7 @@
 - (void)reloadData;
 - (void)setViewContentAtIndex:(NSInteger)index animated:(BOOL)animated;
 - (UIView*)getCurrentView;
+- (void)scrollToPrevious;
 - (void)scrollToNext;
 @end
 

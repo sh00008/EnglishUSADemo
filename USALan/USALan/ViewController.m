@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "LessonView.h"
 #import "AudioPlayer.h"
-#define SIZEOFBUTTON (IS_IPAD ? 128 : 72)
+#define SIZEOFBUTTON (IS_IPAD ? 128 : 48)
 #define BUTTONOFFSET (IS_IPAD ? 20 : 0)
 @interface ViewController ()
 @property CycleScrollView* csView;
@@ -49,10 +49,20 @@
         [self.view addSubview:self.backButton];
         
         
-        _playButton = [[UIButton alloc] initWithFrame:CGRectMake(rc.size.width - (SIZEOFBUTTON + BUTTONOFFSET), rc.size.height - (SIZEOFBUTTON + BUTTONOFFSET), SIZEOFBUTTON, SIZEOFBUTTON)];
+        _playButton = [[UIButton alloc] initWithFrame:CGRectMake((rc.size.width - (SIZEOFBUTTON + BUTTONOFFSET))/2, rc.size.height - (SIZEOFBUTTON + BUTTONOFFSET), SIZEOFBUTTON, SIZEOFBUTTON)];
         [_playButton setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
         [_playButton addTarget:self action:@selector(clickButton) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:self.playButton];
+  
+        _previousButton = [[UIButton alloc] initWithFrame:CGRectMake(_playButton.frame.origin.x - 2*SIZEOFBUTTON, rc.size.height - (SIZEOFBUTTON + BUTTONOFFSET), SIZEOFBUTTON, SIZEOFBUTTON)];
+        [_previousButton setImage:[UIImage imageNamed:@"previous.png"] forState:UIControlStateNormal];
+        [_previousButton addTarget:self action:@selector(clickPreviousButon) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:self.previousButton];
+  
+        _nextButton = [[UIButton alloc] initWithFrame:CGRectMake(_playButton.frame.origin.x + 2*SIZEOFBUTTON, rc.size.height - (SIZEOFBUTTON + BUTTONOFFSET), SIZEOFBUTTON, SIZEOFBUTTON)];
+        [_nextButton setImage:[UIImage imageNamed:@"next.png"] forState:UIControlStateNormal];
+        [_nextButton addTarget:self action:@selector(clickNextButton) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:self.nextButton];
         
         _pageNumberLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, rc.size.height - 44, rc.size.width, 44)];
         _pageNumberLabel.backgroundColor = [UIColor clearColor];
@@ -169,6 +179,14 @@
     [self dismissViewControllerAnimated:YES completion:^(void ) {}];
 }
 
+- (void)clickPreviousButon {
+    [self.csView scrollToPrevious];
+}
+
+- (void)clickNextButton {
+    [self.csView scrollToNext];
+
+}
 - (void)clickButton {
    self.pagePath = [self.delegate getDataPathWithOutSuffix:self.currentNumber];
     if (IS_SAME) {

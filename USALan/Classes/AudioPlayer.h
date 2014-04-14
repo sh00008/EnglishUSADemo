@@ -14,7 +14,7 @@
 
 - (void)initializeAudio;
 
-@property (nonatomic, retain) AVAudioPlayer *player;
+@property (nonatomic, strong) AVAudioPlayer *player;
 @property (nonatomic, retain) NSString* path;
 
 - (void)play;

@@ -18,6 +18,7 @@ void interruptionListenerCallback (void *userData, UInt32 interruptionState)
 
 - (id)init {
     self = [super init];
+    [self initializeAudio];
     return self;
 }
 
@@ -55,7 +56,8 @@ void interruptionListenerCallback (void *userData, UInt32 interruptionState)
 - (void)setPath:(NSString *)p {
     if (![_path isEqualToString:p]) {
         _path = p;
-        if (self.player.isPlaying) {
+        
+       if (self.player.isPlaying) {
             [self.player pause];
         }
         _player = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:p] error:nil];
