@@ -8,14 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "CycleScrollView.h"
-
+#import "CHYSlider.h"
 @protocol ViewControllerDelegate <NSObject>
 
 - (NSString*)getDataPathWithOutSuffix:(NSInteger)fromPage;
 
 @end
 
-@interface ViewController : UIViewController<CycleScrollViewDatasource,CycleScrollViewDelegate>
+@interface ViewController : UIViewController<CycleScrollViewDatasource,CycleScrollViewDelegate> {
+    CHYSlider *_continuousSlider;
+
+}
 @property (nonatomic, strong) UIButton* playButton;
 @property (nonatomic, strong) UIButton* previousButton;
 @property (nonatomic, strong) UIButton* nextButton;

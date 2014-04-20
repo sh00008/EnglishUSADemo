@@ -40,6 +40,17 @@
 		0DAC5DF218D611D3003C6E30 /* MJRefreshFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAC5DEC18D611D3003C6E30 /* MJRefreshFooterView.m */; };
 		0DAC5DF318D611D3003C6E30 /* MJRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAC5DEE18D611D3003C6E30 /* MJRefreshHeaderView.m */; };
 		0DAC5DF618D6125C003C6E30 /* ThumbViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAC5DF518D6125C003C6E30 /* ThumbViewController.m */; };
+		0DD7A1771902C36300100F6C /* CHYSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD7A16C1902C36300100F6C /* CHYSlider.m */; };
+		0DD7A1781902C36300100F6C /* stepped_track_grey.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD7A16D1902C36300100F6C /* stepped_track_grey.png */; };
+		0DD7A1791902C36300100F6C /* stepped_track_grey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD7A16E1902C36300100F6C /* stepped_track_grey@2x.png */; };
+		0DD7A17A1902C36300100F6C /* stepped_track_orange.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD7A16F1902C36300100F6C /* stepped_track_orange.png */; };
+		0DD7A17B1902C36300100F6C /* stepped_track_orange@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD7A1701902C36300100F6C /* stepped_track_orange@2x.png */; };
+		0DD7A17C1902C36300100F6C /* thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD7A1711902C36300100F6C /* thumb.png */; };
+		0DD7A17D1902C36300100F6C /* thumb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD7A1721902C36300100F6C /* thumb@2x.png */; };
+		0DD7A17E1902C36300100F6C /* track_grey.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD7A1731902C36300100F6C /* track_grey.png */; };
+		0DD7A17F1902C36300100F6C /* track_grey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD7A1741902C36300100F6C /* track_grey@2x.png */; };
+		0DD7A1801902C36300100F6C /* track_orange.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD7A1751902C36300100F6C /* track_orange.png */; };
+		0DD7A1811902C36300100F6C /* track_orange@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD7A1761902C36300100F6C /* track_orange@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +112,18 @@
 		0DAC5DEE18D611D3003C6E30 /* MJRefreshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshHeaderView.m; sourceTree = "<group>"; };
 		0DAC5DF418D6125C003C6E30 /* ThumbViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThumbViewController.h; sourceTree = "<group>"; };
 		0DAC5DF518D6125C003C6E30 /* ThumbViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThumbViewController.m; sourceTree = "<group>"; };
+		0DD7A16B1902C36300100F6C /* CHYSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHYSlider.h; sourceTree = "<group>"; };
+		0DD7A16C1902C36300100F6C /* CHYSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHYSlider.m; sourceTree = "<group>"; };
+		0DD7A16D1902C36300100F6C /* stepped_track_grey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stepped_track_grey.png; sourceTree = "<group>"; };
+		0DD7A16E1902C36300100F6C /* stepped_track_grey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stepped_track_grey@2x.png"; sourceTree = "<group>"; };
+		0DD7A16F1902C36300100F6C /* stepped_track_orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stepped_track_orange.png; sourceTree = "<group>"; };
+		0DD7A1701902C36300100F6C /* stepped_track_orange@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stepped_track_orange@2x.png"; sourceTree = "<group>"; };
+		0DD7A1711902C36300100F6C /* thumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumb.png; sourceTree = "<group>"; };
+		0DD7A1721902C36300100F6C /* thumb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb@2x.png"; sourceTree = "<group>"; };
+		0DD7A1731902C36300100F6C /* track_grey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = track_grey.png; sourceTree = "<group>"; };
+		0DD7A1741902C36300100F6C /* track_grey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "track_grey@2x.png"; sourceTree = "<group>"; };
+		0DD7A1751902C36300100F6C /* track_orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = track_orange.png; sourceTree = "<group>"; };
+		0DD7A1761902C36300100F6C /* track_orange@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "track_orange@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +231,7 @@
 		0D250E9018A02DAF0087E3D3 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0DD7A16A1902C36300100F6C /* CHYSlider */,
 				0DAC5DE418D611D3003C6E30 /* MJRefresh */,
 				0D250E9118A02DAF0087E3D3 /* Scrollview */,
 				0D250ECB18A03C9F0087E3D3 /* SentenceBreaker.h */,
@@ -272,6 +296,25 @@
 			path = MJRefresh;
 			sourceTree = "<group>";
 		};
+		0DD7A16A1902C36300100F6C /* CHYSlider */ = {
+			isa = PBXGroup;
+			children = (
+				0DD7A16B1902C36300100F6C /* CHYSlider.h */,
+				0DD7A16C1902C36300100F6C /* CHYSlider.m */,
+				0DD7A16D1902C36300100F6C /* stepped_track_grey.png */,
+				0DD7A16E1902C36300100F6C /* stepped_track_grey@2x.png */,
+				0DD7A16F1902C36300100F6C /* stepped_track_orange.png */,
+				0DD7A1701902C36300100F6C /* stepped_track_orange@2x.png */,
+				0DD7A1711902C36300100F6C /* thumb.png */,
+				0DD7A1721902C36300100F6C /* thumb@2x.png */,
+				0DD7A1731902C36300100F6C /* track_grey.png */,
+				0DD7A1741902C36300100F6C /* track_grey@2x.png */,
+				0DD7A1751902C36300100F6C /* track_orange.png */,
+				0DD7A1761902C36300100F6C /* track_orange@2x.png */,
+			);
+			path = CHYSlider;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -319,6 +362,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = JiaLi;
 				TargetAttributes = {
+					0D250E54189EA3520087E3D3 = {
+						DevelopmentTeam = FJ3FMY7BRU;
+					};
 					0D250E78189EA3520087E3D3 = {
 						TestTargetID = 0D250E54189EA3520087E3D3;
 					};
@@ -349,17 +395,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D250E6F189EA3520087E3D3 /* Main_iPad.storyboard in Resources */,
+				0DD7A17F1902C36300100F6C /* track_grey@2x.png in Resources */,
+				0DD7A17E1902C36300100F6C /* track_grey.png in Resources */,
 				0D446C2518FAF0F900A0F6B2 /* list.png in Resources */,
 				0D446C1E18FA708D00A0F6B2 /* Play.png in Resources */,
 				0D446C2618FAF0F900A0F6B2 /* next.png in Resources */,
 				0D446C2718FAF0F900A0F6B2 /* previous.png in Resources */,
+				0DD7A17C1902C36300100F6C /* thumb.png in Resources */,
 				0D446C2418FAF0F900A0F6B2 /* back.png in Resources */,
 				0D250E74189EA3520087E3D3 /* Images.xcassets in Resources */,
+				0DD7A1791902C36300100F6C /* stepped_track_grey@2x.png in Resources */,
+				0DD7A1781902C36300100F6C /* stepped_track_grey.png in Resources */,
 				0D250ECA18A039730087E3D3 /* Data in Resources */,
 				0D250E6C189EA3520087E3D3 /* Main_iPhone.storyboard in Resources */,
 				0D250E63189EA3520087E3D3 /* InfoPlist.strings in Resources */,
+				0DD7A17D1902C36300100F6C /* thumb@2x.png in Resources */,
+				0DD7A17B1902C36300100F6C /* stepped_track_orange@2x.png in Resources */,
 				0DAC5DEF18D611D3003C6E30 /* MJRefresh.bundle in Resources */,
 				0D446C1D18FA708D00A0F6B2 /* Pause.png in Resources */,
+				0DD7A1801902C36300100F6C /* track_orange.png in Resources */,
+				0DD7A1811902C36300100F6C /* track_orange@2x.png in Resources */,
+				0DD7A17A1902C36300100F6C /* stepped_track_orange.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,6 +439,7 @@
 				0DAC5DF318D611D3003C6E30 /* MJRefreshHeaderView.m in Sources */,
 				0DAC5DF618D6125C003C6E30 /* ThumbViewController.m in Sources */,
 				0DAC5DF218D611D3003C6E30 /* MJRefreshFooterView.m in Sources */,
+				0DD7A1771902C36300100F6C /* CHYSlider.m in Sources */,
 				0DAC5DF018D611D3003C6E30 /* MJRefreshBaseView.m in Sources */,
 				0D4DA11B18A6103D00B31F88 /* AudioPlayer.m in Sources */,
 				0D250E72189EA3520087E3D3 /* ViewController.m in Sources */,
@@ -464,7 +521,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: zuqing hu (8H8L77P3QP)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: zuqing hu (8H8L77P3QP)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -504,6 +562,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: zuqing hu (8H8L77P3QP)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -526,10 +585,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "USALan/USALan-Prefix.pch";
 				INFOPLIST_FILE = "USALan/USALan-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -539,10 +601,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "USALan/USALan-Prefix.pch";
 				INFOPLIST_FILE = "USALan/USALan-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

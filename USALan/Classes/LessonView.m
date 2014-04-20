@@ -28,9 +28,9 @@
         _textView = [[UIView alloc] initWithFrame:CGRectMake(_imageView.frame.origin.x + _imageView.frame.size.width , 20, frame.size.width / 2, frame.size.height - 40)];
         _textView.backgroundColor = [UIColor clearColor];
         [self addSubview:_textView];
-        _srcLabel = [[UILabel alloc] initWithFrame:CGRectMake(0 , 0, _textView.frame.size.width, _textView.frame.size.height)];
+        _srcLabel = [[UILabel alloc] initWithFrame:CGRectMake(0 , SIZEOFBUTTON, _textView.frame.size.width, _textView.frame.size.height - SIZEOFBUTTON)];
         _srcLabel.numberOfLines = 0;
-        [_srcLabel setFont:[UIFont fontWithName:@"Helvetica" size:IS_IPAD ? 48 : 26]];
+        [_srcLabel setFont:[UIFont fontWithName:@"Helvetica" size:IS_IPAD ? 44 : 18]];
         _srcLabel.textAlignment = NSTextAlignmentCenter;
         _srcLabel.backgroundColor = [UIColor clearColor];
         [_textView addSubview:_srcLabel];

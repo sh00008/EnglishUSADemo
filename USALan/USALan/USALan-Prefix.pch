@@ -19,3 +19,5 @@
 #define HEADERSTRING @"book1-"
 #define RLATIONOFFSET 1
 #define IS_SAME 0
+#define SIZEOFBUTTON (IS_IPAD ? 128 : 48)
+#define BUTTONOFFSET (IS_IPAD ? 40 : 20)

@@ -9,8 +9,6 @@
 #import "ViewController.h"
 #import "LessonView.h"
 #import "AudioPlayer.h"
-#define SIZEOFBUTTON (IS_IPAD ? 128 : 48)
-#define BUTTONOFFSET (IS_IPAD ? 20 : 0)
 @interface ViewController ()
 @property CycleScrollView* csView;
 @property NSMutableArray* dataArray;
@@ -28,7 +26,8 @@
     self.buttonStatus = 0;
     _player = [[AudioPlayer alloc] init];
         // Do any additional setup after loading the view, typically from a nib.
-}
+    
+ }
 
 - (void)viewWillAppear:(BOOL)animated {
     if (self.csView == nil) {
@@ -48,9 +47,15 @@
         [_backButton addTarget:self action:@selector(backToThumb) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:self.backButton];
         
+        _continuousSlider = [[CHYSlider alloc] initWithFrame:CGRectMake(SIZEOFBUTTON+20, 20, rc.size.width - 2*SIZEOFBUTTON, 20)];
+        _continuousSlider.labelAboveThumb.font = [UIFont boldSystemFontOfSize:25.f];
+        _continuousSlider.minimumValue = 1;
+        _continuousSlider.maximumValue = self.totalCount;
+        _continuousSlider.value = self.currentNumber;
+        [self.view addSubview:_continuousSlider];
         
         _playButton = [[UIButton alloc] initWithFrame:CGRectMake((rc.size.width - (SIZEOFBUTTON + BUTTONOFFSET))/2, rc.size.height - (SIZEOFBUTTON + BUTTONOFFSET), SIZEOFBUTTON, SIZEOFBUTTON)];
-        [_playButton setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
+        [_playButton setImage:[UIImage imageNamed:@"Play.png"] forState:UIControlStateNormal];
         [_playButton addTarget:self action:@selector(clickButton) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:self.playButton];
   
@@ -64,11 +69,11 @@
         [_nextButton addTarget:self action:@selector(clickNextButton) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:self.nextButton];
         
-        _pageNumberLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, rc.size.height - 44, rc.size.width, 44)];
+        /*_pageNumberLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, rc.size.height - 44, rc.size.width, 44)];
         _pageNumberLabel.backgroundColor = [UIColor clearColor];
         _pageNumberLabel.text = [NSString stringWithFormat:@"%d / %d", self.currentNumber, self.totalCount];
         _pageNumberLabel.textAlignment = NSTextAlignmentCenter;
-        [self.view addSubview:self.pageNumberLabel];
+        [self.view addSubview:self.pageNumberLabel];*/
         
         self.view.backgroundColor = [UIColor colorWithRed:152.0/255.0 green:209.0/255.0 blue:240.0/255.0 alpha:1.0];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPlayNotification:) name:@"didPlayNotification" object:nil];
@@ -143,7 +148,7 @@
                 if (chRange.location != NSNotFound) {
                     NSInteger first = [[textName substringToIndex:chRange.location] integerValue];
                     NSInteger second = [[textName substringFromIndex:(chRange.location+1)] integerValue];
-                    NSString* textfilename = [NSString stringWithFormat:@"%d-%d", first - RLATIONOFFSET, second + RLATIONOFFSET];
+                    NSString* textfilename = [NSString stringWithFormat:@"%d-%d", first - RLATIONOFFSET, second];
                     NSString* textPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"%@", @"/Data/Text/"];
                     
                     NSString* lessonContent =  [NSString stringWithContentsOfFile:[textPath stringByAppendingFormat:@"%@.txt", textfilename] encoding: NSASCIIStringEncoding error:nil];
@@ -160,11 +165,13 @@
 - (void)didTurnPage:(NSInteger)page {
     if (page == 0 && self.currentNumber != 1) {
         self.currentNumber--;
+        _continuousSlider.value = self.currentNumber;
        _pageNumberLabel.text = [NSString stringWithFormat:@"%d / %d", self.currentNumber, self.totalCount];    }
     
     if (page == 2 && self.currentNumber != self.totalCount) {
         self.currentNumber++;
-        _pageNumberLabel.text = [NSString stringWithFormat:@"%d / %d", self.currentNumber, self.totalCount];   }
+        _continuousSlider.value = self.currentNumber;
+       _pageNumberLabel.text = [NSString stringWithFormat:@"%d / %d", self.currentNumber, self.totalCount];   }
 }
 
 - (BOOL)firstPage {
@@ -204,7 +211,7 @@
                 if (chRange.location != NSNotFound) {
                     NSInteger first = [[textName substringToIndex:chRange.location] integerValue];
                     NSInteger second = [[textName substringFromIndex:(chRange.location+1)] integerValue];
-                    NSString* textfilename = [NSString stringWithFormat:@"%d-%d", first - RLATIONOFFSET, second + RLATIONOFFSET];
+                    NSString* textfilename = [NSString stringWithFormat:@"%d-%d", first - RLATIONOFFSET, second];
                     NSString* textPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"%@", @"/Data/Voice/"];
                     NSString* path = [textPath stringByAppendingFormat:@"%@.mp3", textfilename];
                     self.player.path = path;
@@ -227,13 +234,13 @@
             0) {
             // PLAY
             self.buttonStatus = 1;
-            [self.playButton setImage:[UIImage imageNamed:@"pause.png"] forState:UIControlStateNormal];
+            [self.playButton setImage:[UIImage imageNamed:@"Pause.png"] forState:UIControlStateNormal];
             [self.player play];
             [lessonView startAnimation];
         } else {
             // PAUSE
             self.buttonStatus = 0;
-            [_playButton setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
+            [_playButton setImage:[UIImage imageNamed:@"Play.png"] forState:UIControlStateNormal];
              [self.player pause];
             [lessonView pause];
         }
@@ -251,8 +258,6 @@
 - (void)didPlayNotification:(NSNotification*)object {
     self.buttonStatus = 0;
     [_playButton setImage:[UIImage imageNamed:@"Play.png"] forState:UIControlStateNormal];
-    [_playButton setImage:[UIImage imageNamed:@"PlayHot.png"] forState:UIControlStateSelected];
-    [_playButton setImage:[UIImage imageNamed:@"PlayHot.png"] forState:UIControlStateHighlighted];
     [self performSelector:@selector(doNextPlay) withObject:nil afterDelay:1.0];
 
  }
