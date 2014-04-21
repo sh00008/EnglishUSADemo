@@ -40,17 +40,11 @@
 		0DAC5DF218D611D3003C6E30 /* MJRefreshFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAC5DEC18D611D3003C6E30 /* MJRefreshFooterView.m */; };
 		0DAC5DF318D611D3003C6E30 /* MJRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAC5DEE18D611D3003C6E30 /* MJRefreshHeaderView.m */; };
 		0DAC5DF618D6125C003C6E30 /* ThumbViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAC5DF518D6125C003C6E30 /* ThumbViewController.m */; };
-		0DD7A1771902C36300100F6C /* CHYSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD7A16C1902C36300100F6C /* CHYSlider.m */; };
-		0DD7A1781902C36300100F6C /* stepped_track_grey.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD7A16D1902C36300100F6C /* stepped_track_grey.png */; };
-		0DD7A1791902C36300100F6C /* stepped_track_grey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD7A16E1902C36300100F6C /* stepped_track_grey@2x.png */; };
-		0DD7A17A1902C36300100F6C /* stepped_track_orange.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD7A16F1902C36300100F6C /* stepped_track_orange.png */; };
-		0DD7A17B1902C36300100F6C /* stepped_track_orange@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD7A1701902C36300100F6C /* stepped_track_orange@2x.png */; };
-		0DD7A17C1902C36300100F6C /* thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD7A1711902C36300100F6C /* thumb.png */; };
-		0DD7A17D1902C36300100F6C /* thumb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD7A1721902C36300100F6C /* thumb@2x.png */; };
-		0DD7A17E1902C36300100F6C /* track_grey.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD7A1731902C36300100F6C /* track_grey.png */; };
-		0DD7A17F1902C36300100F6C /* track_grey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD7A1741902C36300100F6C /* track_grey@2x.png */; };
-		0DD7A1801902C36300100F6C /* track_orange.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD7A1751902C36300100F6C /* track_orange.png */; };
-		0DD7A1811902C36300100F6C /* track_orange@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD7A1761902C36300100F6C /* track_orange@2x.png */; };
+		0DD7A18319047F3E00100F6C /* VewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DD7A18219047F3E00100F6C /* VewController.xib */; };
+		0DD7A1851905698F00100F6C /* header.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD7A1841905698F00100F6C /* header.png */; };
+		0DD7A1881905CCEB00100F6C /* BookView_BackButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD7A1861905CCEB00100F6C /* BookView_BackButton.png */; };
+		0DD7A1891905CCEB00100F6C /* BookView_BackButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD7A1871905CCEB00100F6C /* BookView_BackButton@2x.png */; };
+		0DD7A18D1905D3E300100F6C /* VewControlleriPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DD7A18C1905D3E300100F6C /* VewControlleriPad.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,18 +106,11 @@
 		0DAC5DEE18D611D3003C6E30 /* MJRefreshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshHeaderView.m; sourceTree = "<group>"; };
 		0DAC5DF418D6125C003C6E30 /* ThumbViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThumbViewController.h; sourceTree = "<group>"; };
 		0DAC5DF518D6125C003C6E30 /* ThumbViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThumbViewController.m; sourceTree = "<group>"; };
-		0DD7A16B1902C36300100F6C /* CHYSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHYSlider.h; sourceTree = "<group>"; };
-		0DD7A16C1902C36300100F6C /* CHYSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHYSlider.m; sourceTree = "<group>"; };
-		0DD7A16D1902C36300100F6C /* stepped_track_grey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stepped_track_grey.png; sourceTree = "<group>"; };
-		0DD7A16E1902C36300100F6C /* stepped_track_grey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stepped_track_grey@2x.png"; sourceTree = "<group>"; };
-		0DD7A16F1902C36300100F6C /* stepped_track_orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stepped_track_orange.png; sourceTree = "<group>"; };
-		0DD7A1701902C36300100F6C /* stepped_track_orange@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stepped_track_orange@2x.png"; sourceTree = "<group>"; };
-		0DD7A1711902C36300100F6C /* thumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumb.png; sourceTree = "<group>"; };
-		0DD7A1721902C36300100F6C /* thumb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb@2x.png"; sourceTree = "<group>"; };
-		0DD7A1731902C36300100F6C /* track_grey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = track_grey.png; sourceTree = "<group>"; };
-		0DD7A1741902C36300100F6C /* track_grey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "track_grey@2x.png"; sourceTree = "<group>"; };
-		0DD7A1751902C36300100F6C /* track_orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = track_orange.png; sourceTree = "<group>"; };
-		0DD7A1761902C36300100F6C /* track_orange@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "track_orange@2x.png"; sourceTree = "<group>"; };
+		0DD7A18219047F3E00100F6C /* VewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VewController.xib; sourceTree = "<group>"; };
+		0DD7A1841905698F00100F6C /* header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = header.png; path = USALan/Resource/AppImage/header.png; sourceTree = SOURCE_ROOT; };
+		0DD7A1861905CCEB00100F6C /* BookView_BackButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BookView_BackButton.png; path = USALan/Resource/AppImage/BookView_BackButton.png; sourceTree = SOURCE_ROOT; };
+		0DD7A1871905CCEB00100F6C /* BookView_BackButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BookView_BackButton@2x.png"; path = "USALan/Resource/AppImage/BookView_BackButton@2x.png"; sourceTree = SOURCE_ROOT; };
+		0DD7A18C1905D3E300100F6C /* VewControlleriPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VewControlleriPad.xib; path = ../Classes/VewControlleriPad.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +180,8 @@
 				0D250E6D189EA3520087E3D3 /* Main_iPad.storyboard */,
 				0D250E70189EA3520087E3D3 /* ViewController.h */,
 				0D250E71189EA3520087E3D3 /* ViewController.m */,
+				0DD7A18219047F3E00100F6C /* VewController.xib */,
+				0DD7A18C1905D3E300100F6C /* VewControlleriPad.xib */,
 				0D250E73189EA3520087E3D3 /* Images.xcassets */,
 				0D250E5F189EA3520087E3D3 /* Supporting Files */,
 			);
@@ -231,7 +220,6 @@
 		0D250E9018A02DAF0087E3D3 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				0DD7A16A1902C36300100F6C /* CHYSlider */,
 				0DAC5DE418D611D3003C6E30 /* MJRefresh */,
 				0D250E9118A02DAF0087E3D3 /* Scrollview */,
 				0D250ECB18A03C9F0087E3D3 /* SentenceBreaker.h */,
@@ -268,6 +256,9 @@
 		0D250ED618A44B540087E3D3 /* AppImage */ = {
 			isa = PBXGroup;
 			children = (
+				0DD7A1861905CCEB00100F6C /* BookView_BackButton.png */,
+				0DD7A1871905CCEB00100F6C /* BookView_BackButton@2x.png */,
+				0DD7A1841905698F00100F6C /* header.png */,
 				0D446C2018FAF0F900A0F6B2 /* back.png */,
 				0D446C2118FAF0F900A0F6B2 /* list.png */,
 				0D446C2218FAF0F900A0F6B2 /* next.png */,
@@ -294,25 +285,6 @@
 				0DAC5DEE18D611D3003C6E30 /* MJRefreshHeaderView.m */,
 			);
 			path = MJRefresh;
-			sourceTree = "<group>";
-		};
-		0DD7A16A1902C36300100F6C /* CHYSlider */ = {
-			isa = PBXGroup;
-			children = (
-				0DD7A16B1902C36300100F6C /* CHYSlider.h */,
-				0DD7A16C1902C36300100F6C /* CHYSlider.m */,
-				0DD7A16D1902C36300100F6C /* stepped_track_grey.png */,
-				0DD7A16E1902C36300100F6C /* stepped_track_grey@2x.png */,
-				0DD7A16F1902C36300100F6C /* stepped_track_orange.png */,
-				0DD7A1701902C36300100F6C /* stepped_track_orange@2x.png */,
-				0DD7A1711902C36300100F6C /* thumb.png */,
-				0DD7A1721902C36300100F6C /* thumb@2x.png */,
-				0DD7A1731902C36300100F6C /* track_grey.png */,
-				0DD7A1741902C36300100F6C /* track_grey@2x.png */,
-				0DD7A1751902C36300100F6C /* track_orange.png */,
-				0DD7A1761902C36300100F6C /* track_orange@2x.png */,
-			);
-			path = CHYSlider;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -395,27 +367,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D250E6F189EA3520087E3D3 /* Main_iPad.storyboard in Resources */,
-				0DD7A17F1902C36300100F6C /* track_grey@2x.png in Resources */,
-				0DD7A17E1902C36300100F6C /* track_grey.png in Resources */,
+				0DD7A18D1905D3E300100F6C /* VewControlleriPad.xib in Resources */,
 				0D446C2518FAF0F900A0F6B2 /* list.png in Resources */,
 				0D446C1E18FA708D00A0F6B2 /* Play.png in Resources */,
 				0D446C2618FAF0F900A0F6B2 /* next.png in Resources */,
+				0DD7A1851905698F00100F6C /* header.png in Resources */,
 				0D446C2718FAF0F900A0F6B2 /* previous.png in Resources */,
-				0DD7A17C1902C36300100F6C /* thumb.png in Resources */,
+				0DD7A1891905CCEB00100F6C /* BookView_BackButton@2x.png in Resources */,
 				0D446C2418FAF0F900A0F6B2 /* back.png in Resources */,
 				0D250E74189EA3520087E3D3 /* Images.xcassets in Resources */,
-				0DD7A1791902C36300100F6C /* stepped_track_grey@2x.png in Resources */,
-				0DD7A1781902C36300100F6C /* stepped_track_grey.png in Resources */,
 				0D250ECA18A039730087E3D3 /* Data in Resources */,
 				0D250E6C189EA3520087E3D3 /* Main_iPhone.storyboard in Resources */,
+				0DD7A1881905CCEB00100F6C /* BookView_BackButton.png in Resources */,
 				0D250E63189EA3520087E3D3 /* InfoPlist.strings in Resources */,
-				0DD7A17D1902C36300100F6C /* thumb@2x.png in Resources */,
-				0DD7A17B1902C36300100F6C /* stepped_track_orange@2x.png in Resources */,
 				0DAC5DEF18D611D3003C6E30 /* MJRefresh.bundle in Resources */,
 				0D446C1D18FA708D00A0F6B2 /* Pause.png in Resources */,
-				0DD7A1801902C36300100F6C /* track_orange.png in Resources */,
-				0DD7A1811902C36300100F6C /* track_orange@2x.png in Resources */,
-				0DD7A17A1902C36300100F6C /* stepped_track_orange.png in Resources */,
+				0DD7A18319047F3E00100F6C /* VewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,7 +406,6 @@
 				0DAC5DF318D611D3003C6E30 /* MJRefreshHeaderView.m in Sources */,
 				0DAC5DF618D6125C003C6E30 /* ThumbViewController.m in Sources */,
 				0DAC5DF218D611D3003C6E30 /* MJRefreshFooterView.m in Sources */,
-				0DD7A1771902C36300100F6C /* CHYSlider.m in Sources */,
 				0DAC5DF018D611D3003C6E30 /* MJRefreshBaseView.m in Sources */,
 				0D4DA11B18A6103D00B31F88 /* AudioPlayer.m in Sources */,
 				0D250E72189EA3520087E3D3 /* ViewController.m in Sources */,

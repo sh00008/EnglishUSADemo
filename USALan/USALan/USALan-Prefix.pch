@@ -21,3 +21,4 @@
 #define IS_SAME 0
 #define SIZEOFBUTTON (IS_IPAD ? 128 : 48)
 #define BUTTONOFFSET (IS_IPAD ? 40 : 20)
+#define IS_IOS7 (kCFCoreFoundationVersionNumber > kCFCoreFoundationVersionNumber_iOS_6_1)

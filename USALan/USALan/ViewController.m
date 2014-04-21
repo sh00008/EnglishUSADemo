@@ -14,8 +14,6 @@
 @property NSMutableArray* dataArray;
 @property NSInteger buttonStatus;
 @property (nonatomic, strong) AudioPlayer* player;
-@property (nonatomic, strong) UIButton* backButton;
-@property (nonatomic, strong) UILabel* pageNumberLabel;
 @end
 
 @implementation ViewController
@@ -25,6 +23,7 @@
     [super viewDidLoad];
     self.buttonStatus = 0;
     _player = [[AudioPlayer alloc] init];
+    [self initSliderView];
         // Do any additional setup after loading the view, typically from a nib.
     
  }
@@ -41,18 +40,11 @@
         self.csView = _csView;
         self.csView.currentPage = self.currentNumber;
         [self.csView reloadData];
-        _backButton = [[UIButton alloc] initWithFrame:CGRectMake(2, 20, SIZEOFBUTTON, SIZEOFBUTTON)];
-        UIImage* im = [UIImage imageNamed:@"back.png"];
-        [_backButton setImage:im forState:UIControlStateNormal];
+        //_backButton = [[UIButton alloc] initWithFrame:CGRectMake(2, 20, SIZEOFBUTTON, SIZEOFBUTTON)];
+        //UIImage* im = [UIImage imageNamed:@"back.png"];
+        //[_backButton setImage:im forState:UIControlStateNormal];
         [_backButton addTarget:self action:@selector(backToThumb) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:self.backButton];
-        
-        _continuousSlider = [[CHYSlider alloc] initWithFrame:CGRectMake(SIZEOFBUTTON+20, 20, rc.size.width - 2*SIZEOFBUTTON, 20)];
-        _continuousSlider.labelAboveThumb.font = [UIFont boldSystemFontOfSize:25.f];
-        _continuousSlider.minimumValue = 1;
-        _continuousSlider.maximumValue = self.totalCount;
-        _continuousSlider.value = self.currentNumber;
-        [self.view addSubview:_continuousSlider];
         
         _playButton = [[UIButton alloc] initWithFrame:CGRectMake((rc.size.width - (SIZEOFBUTTON + BUTTONOFFSET))/2, rc.size.height - (SIZEOFBUTTON + BUTTONOFFSET), SIZEOFBUTTON, SIZEOFBUTTON)];
         [_playButton setImage:[UIImage imageNamed:@"Play.png"] forState:UIControlStateNormal];
@@ -78,6 +70,53 @@
         self.view.backgroundColor = [UIColor colorWithRed:152.0/255.0 green:209.0/255.0 blue:240.0/255.0 alpha:1.0];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPlayNotification:) name:@"didPlayNotification" object:nil];
     }
+}
+
+- (void)initSliderView {
+    
+    [self.slider addTarget:self action:@selector(didChangedSlider:) forControlEvents:UIControlEventTouchUpInside];
+    [self.slider addTarget:self action:@selector(didChangedSlider:) forControlEvents:UIControlEventTouchUpOutside];
+    [self.slider addTarget:self action:@selector(changingSlider:) forControlEvents:UIControlEventValueChanged];
+    
+    UIImage *backgroundImage = [[UIImage imageNamed:@"BookView_Bottom.png"]
+                                stretchableImageWithLeftCapWidth:2.0
+                                topCapHeight:10.0];
+    
+    UIImageView *sliderBackgroundView = [[UIImageView alloc] initWithImage:backgroundImage];
+    sliderBackgroundView.frame = CGRectMake(0.0, 0.0, self.view.bounds.size.width, self.sliderView.frame.size.height);
+    
+    [self.sliderView addSubview:sliderBackgroundView];
+    [self.sliderView sendSubviewToBack:sliderBackgroundView];
+    
+    //For iOS7
+    if (IS_IOS7) {
+        [self.slider setMinimumTrackTintColor:[UIColor colorWithRed:0.91f green:0.48f blue:0.14f alpha:1.00f]];
+        [self.slider setMaximumTrackTintColor:[UIColor colorWithRed:0.85f green:0.80f blue:0.76f alpha:1.00f]];
+    }
+    
+    [self.slider setThumbImage:[UIImage imageNamed:@"BookView_SliderThumbImage.png"] forState:UIControlStateNormal];
+    [self.slider setThumbImage:[UIImage imageNamed:@"BookView_SliderThumbImage.png"] forState:UIControlStateHighlighted];
+    
+    if (IS_IPAD) {
+        self.slider.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
+    } else {
+        self.slider.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
+    }
+    
+        
+     //[self.view bringSubviewToFront:self.sliderView];
+    self.sliderView.exclusiveTouch = YES;
+    self.slider.maximumValue = self.totalCount;
+    self.slider.minimumValue = 1;
+    [self showPageNumber];
+}
+
+- (IBAction)didChangedSlider:(id)sender {
+
+}
+
+- (IBAction)changingSlider:(id)sender {
+    
 }
 - (void)viewDidUnload
 {
@@ -162,17 +201,21 @@
    return lessonView;
 }
 
+- (void)showPageNumber {
+    _pageNumberLabel.text = [NSString stringWithFormat:@"%d / %d", self.currentNumber, self.totalCount];
+    self.slider.value = self.currentNumber;
+}
+
 - (void)didTurnPage:(NSInteger)page {
     if (page == 0 && self.currentNumber != 1) {
         self.currentNumber--;
-        _continuousSlider.value = self.currentNumber;
-       _pageNumberLabel.text = [NSString stringWithFormat:@"%d / %d", self.currentNumber, self.totalCount];    }
-    
+        [self showPageNumber];
+    }
     if (page == 2 && self.currentNumber != self.totalCount) {
         self.currentNumber++;
-        _continuousSlider.value = self.currentNumber;
-       _pageNumberLabel.text = [NSString stringWithFormat:@"%d / %d", self.currentNumber, self.totalCount];   }
-}
+        [self showPageNumber];
+
+    }}
 
 - (BOOL)firstPage {
     return self.currentNumber == 1;

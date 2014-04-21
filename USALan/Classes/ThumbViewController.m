@@ -178,7 +178,7 @@ NSString *const MJCollectionViewCellIdentifier = @"Cell";
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    ViewController* nextViewController = [[ViewController alloc] init];
+    ViewController* nextViewController = [[ViewController alloc] initWithNibName:IS_IPAD? @"VewControlleriPad" : @"VewController" bundle:nil];
     nextViewController.totalCount = [_dataArray count];
     nextViewController.currentNumber = indexPath.row+1;
     nextViewController.pagePath = [_dataArray objectAtIndex:indexPath.row];
