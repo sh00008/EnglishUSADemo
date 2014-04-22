@@ -159,8 +159,8 @@
                          if (finished) {
                              // Do your method here after your animation.
                              _currentPage = 0;
-                             [self setPreviousPage];
                              [_datasource didTurnPage:_currentPage];
+                             [self setPreviousPage];
                          }
                      }];
     
@@ -175,14 +175,19 @@
                         options:UIViewAnimationOptionCurveEaseOut
                      animations:^{
                          // Do your animations here.
-                         [_scrollView setContentOffset:CGPointMake(_scrollView.frame.size.width*2, 0) animated:NO];
+                         if ([_datasource firstPage]) {
+                             [_scrollView setContentOffset:CGPointMake(_scrollView.frame.size.width, 0) animated:NO];
+                         } else {
+                             [_scrollView setContentOffset:CGPointMake(_scrollView.frame.size.width*2, 0) animated:NO];
+                             
+                         }
                      }
                      completion:^(BOOL finished){
                          if (finished) {
                              // Do your method here after your animation.
                              _currentPage = 2;
-                             [self setNextPage];
                              [_datasource didTurnPage:_currentPage];
+                             [self setNextPage];
                          }
                      }];
     
