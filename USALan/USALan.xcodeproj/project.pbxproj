@@ -52,6 +52,8 @@
 		0DD7A1881905CCEB00100F6C /* BookView_BackButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD7A1861905CCEB00100F6C /* BookView_BackButton.png */; };
 		0DD7A1891905CCEB00100F6C /* BookView_BackButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD7A1871905CCEB00100F6C /* BookView_BackButton@2x.png */; };
 		0DD7A18D1905D3E300100F6C /* VewControlleriPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DD7A18C1905D3E300100F6C /* VewControlleriPad.xib */; };
+		0DD7A39B1907233400100F6C /* bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0DD7A39A1907233400100F6C /* bg.jpg */; };
+		0DD7A39D1907267E00100F6C /* main_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD7A39C1907267E00100F6C /* main_bg.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +127,8 @@
 		0DD7A1861905CCEB00100F6C /* BookView_BackButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BookView_BackButton.png; path = USALan/Resource/AppImage/BookView_BackButton.png; sourceTree = SOURCE_ROOT; };
 		0DD7A1871905CCEB00100F6C /* BookView_BackButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BookView_BackButton@2x.png"; path = "USALan/Resource/AppImage/BookView_BackButton@2x.png"; sourceTree = SOURCE_ROOT; };
 		0DD7A18C1905D3E300100F6C /* VewControlleriPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VewControlleriPad.xib; path = ../Classes/VewControlleriPad.xib; sourceTree = "<group>"; };
+		0DD7A39A1907233400100F6C /* bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = bg.jpg; path = USALan/Resource/AppImage/bg.jpg; sourceTree = SOURCE_ROOT; };
+		0DD7A39C1907267E00100F6C /* main_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = main_bg.png; path = USALan/Resource/AppImage/main_bg.png; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -270,6 +274,8 @@
 		0D250ED618A44B540087E3D3 /* AppImage */ = {
 			isa = PBXGroup;
 			children = (
+				0DD7A39C1907267E00100F6C /* main_bg.png */,
+				0DD7A39A1907233400100F6C /* bg.jpg */,
 				0DD7A1861905CCEB00100F6C /* BookView_BackButton.png */,
 				0DD7A1871905CCEB00100F6C /* BookView_BackButton@2x.png */,
 				0D446C2018FAF0F900A0F6B2 /* back.png */,
@@ -404,9 +410,11 @@
 				0D250ECA18A039730087E3D3 /* Data in Resources */,
 				0D250E6C189EA3520087E3D3 /* Main_iPhone.storyboard in Resources */,
 				0DD7A1881905CCEB00100F6C /* BookView_BackButton.png in Resources */,
+				0DD7A39D1907267E00100F6C /* main_bg.png in Resources */,
 				0D6258BB1906447600D764DE /* BookView_SliderDarkImage@2x.png in Resources */,
 				0D6258BA1906447600D764DE /* BookView_SliderDarkImage.png in Resources */,
 				0D250E63189EA3520087E3D3 /* InfoPlist.strings in Resources */,
+				0DD7A39B1907233400100F6C /* bg.jpg in Resources */,
 				0D6258B81906447600D764DE /* BookView_SliderBackground.png in Resources */,
 				0DAC5DEF18D611D3003C6E30 /* MJRefresh.bundle in Resources */,
 				0D446C1D18FA708D00A0F6B2 /* Pause.png in Resources */,
@@ -532,7 +540,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -567,7 +575,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -584,6 +592,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "USALan/USALan-Prefix.pch";
 				INFOPLIST_FILE = "USALan/USALan-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -600,6 +609,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "USALan/USALan-Prefix.pch";
 				INFOPLIST_FILE = "USALan/USALan-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;

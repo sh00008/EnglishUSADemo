@@ -12,7 +12,7 @@ NSString *const MJCollectionViewCellIdentifier = @"Cell";
 
 #import "MJRefresh.h"
 #define COUNTPERPAGE IS_IPAD ? 20 : 15
-#define SIZEPERPAGE IS_IPAD ? 160 :80
+#define SIZEPERPAGE IS_IPAD ? 160 :(IS_IPHONE5 ? 80 : 70)
 #define EDGEPERPAGE IS_IPAD ? UIEdgeInsetsMake(50, 40, 40,40) :UIEdgeInsetsMake(30, 20, 20,20)
 
 @interface ThumbViewController () <MJRefreshBaseViewDelegate>
@@ -64,7 +64,7 @@ NSString *const MJCollectionViewCellIdentifier = @"Cell";
    
     // 1.注册
     self.collectionView.backgroundColor = [UIColor whiteColor];
-    self.collectionView.backgroundColor = [UIColor colorWithRed:152.0/255.0 green:209.0/255.0 blue:240.0/255.0 alpha:1.0];
+    self.collectionView.backgroundColor = [UIColor colorWithRed:152.0/255.0 green:209.0/255.0 blue:240.0/255.0 alpha:0.8];
     self.collectionView.alwaysBounceVertical = YES;
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:MJCollectionViewCellIdentifier];
     [self loadThumImage];
