@@ -23,8 +23,7 @@
     [super viewDidLoad];
     self.buttonStatus = 0;
     _player = [[AudioPlayer alloc] init];
-    [self initSliderView];
-        // Do any additional setup after loading the view, typically from a nib.
+          // Do any additional setup after loading the view, typically from a nib.
     
  }
 
@@ -37,6 +36,7 @@
         _csView.delegate = self;
         _csView.datasource = self;
         [self.view addSubview:_csView];
+        [self.view bringSubviewToFront:self.toolBarView];
         self.csView = _csView;
         self.csView.currentPage = self.currentNumber;
         [self.csView reloadData];
@@ -69,6 +69,7 @@
         
         self.view.backgroundColor = [UIColor colorWithRed:152.0/255.0 green:209.0/255.0 blue:240.0/255.0 alpha:1.0];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPlayNotification:) name:@"didPlayNotification" object:nil];
+        [self initSliderView];
     }
 }
 
@@ -105,9 +106,10 @@
     
         
      //[self.view bringSubviewToFront:self.sliderView];
-    self.sliderView.exclusiveTouch = YES;
+    //self.sliderView.exclusiveTouch = YES;
     self.slider.maximumValue = self.totalCount;
     self.slider.minimumValue = 1;
+    self.slider.userInteractionEnabled = YES;
     [self showPageNumber];
 }
 

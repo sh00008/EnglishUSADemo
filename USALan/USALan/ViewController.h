@@ -29,5 +29,5 @@
 @property (nonatomic, strong) IBOutlet UILabel* pageNumberLabel;
 @property (nonatomic, strong) IBOutlet UISlider  *slider;
 @property (nonatomic, strong) IBOutlet UIView* sliderView;
-
+@property (nonatomic, strong) IBOutlet UIView* toolBarView;
 @end

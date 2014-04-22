@@ -34,6 +34,14 @@
 		0D446C2718FAF0F900A0F6B2 /* previous.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D446C2318FAF0F900A0F6B2 /* previous.png */; };
 		0D4DA11B18A6103D00B31F88 /* AudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4DA11A18A6103D00B31F88 /* AudioPlayer.m */; };
 		0D4DA11D18A6105A00B31F88 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4DA11C18A6105A00B31F88 /* AudioToolbox.framework */; };
+		0D6258B81906447600D764DE /* BookView_SliderBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D6258B11906447600D764DE /* BookView_SliderBackground.png */; };
+		0D6258B91906447600D764DE /* BookView_SliderBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D6258B21906447600D764DE /* BookView_SliderBackground@2x.png */; };
+		0D6258BA1906447600D764DE /* BookView_SliderDarkImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D6258B31906447600D764DE /* BookView_SliderDarkImage.png */; };
+		0D6258BB1906447600D764DE /* BookView_SliderDarkImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D6258B41906447600D764DE /* BookView_SliderDarkImage@2x.png */; };
+		0D6258BC1906447600D764DE /* BookView_SliderMaxImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D6258B51906447600D764DE /* BookView_SliderMaxImage@2x.png */; };
+		0D6258BD1906447600D764DE /* BookView_SliderMinImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D6258B61906447600D764DE /* BookView_SliderMinImage@2x.png */; };
+		0D6258BE1906447600D764DE /* BookView_SliderThumbImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D6258B71906447600D764DE /* BookView_SliderThumbImage@2x.png */; };
+		0D6258C01906458300D764DE /* glass.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D6258BF1906458300D764DE /* glass.png */; };
 		0DAC5DEF18D611D3003C6E30 /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0DAC5DE518D611D3003C6E30 /* MJRefresh.bundle */; };
 		0DAC5DF018D611D3003C6E30 /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAC5DE818D611D3003C6E30 /* MJRefreshBaseView.m */; };
 		0DAC5DF118D611D3003C6E30 /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAC5DEA18D611D3003C6E30 /* MJRefreshConst.m */; };
@@ -41,7 +49,6 @@
 		0DAC5DF318D611D3003C6E30 /* MJRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAC5DEE18D611D3003C6E30 /* MJRefreshHeaderView.m */; };
 		0DAC5DF618D6125C003C6E30 /* ThumbViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAC5DF518D6125C003C6E30 /* ThumbViewController.m */; };
 		0DD7A18319047F3E00100F6C /* VewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DD7A18219047F3E00100F6C /* VewController.xib */; };
-		0DD7A1851905698F00100F6C /* header.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD7A1841905698F00100F6C /* header.png */; };
 		0DD7A1881905CCEB00100F6C /* BookView_BackButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD7A1861905CCEB00100F6C /* BookView_BackButton.png */; };
 		0DD7A1891905CCEB00100F6C /* BookView_BackButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD7A1871905CCEB00100F6C /* BookView_BackButton@2x.png */; };
 		0DD7A18D1905D3E300100F6C /* VewControlleriPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DD7A18C1905D3E300100F6C /* VewControlleriPad.xib */; };
@@ -94,6 +101,14 @@
 		0D4DA11918A6103D00B31F88 /* AudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayer.h; sourceTree = "<group>"; };
 		0D4DA11A18A6103D00B31F88 /* AudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioPlayer.m; sourceTree = "<group>"; };
 		0D4DA11C18A6105A00B31F88 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		0D6258B11906447600D764DE /* BookView_SliderBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BookView_SliderBackground.png; path = USALan/Resource/AppImage/BookView_SliderBackground.png; sourceTree = SOURCE_ROOT; };
+		0D6258B21906447600D764DE /* BookView_SliderBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BookView_SliderBackground@2x.png"; path = "USALan/Resource/AppImage/BookView_SliderBackground@2x.png"; sourceTree = SOURCE_ROOT; };
+		0D6258B31906447600D764DE /* BookView_SliderDarkImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BookView_SliderDarkImage.png; path = USALan/Resource/AppImage/BookView_SliderDarkImage.png; sourceTree = SOURCE_ROOT; };
+		0D6258B41906447600D764DE /* BookView_SliderDarkImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BookView_SliderDarkImage@2x.png"; path = "USALan/Resource/AppImage/BookView_SliderDarkImage@2x.png"; sourceTree = SOURCE_ROOT; };
+		0D6258B51906447600D764DE /* BookView_SliderMaxImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BookView_SliderMaxImage@2x.png"; path = "USALan/Resource/AppImage/BookView_SliderMaxImage@2x.png"; sourceTree = SOURCE_ROOT; };
+		0D6258B61906447600D764DE /* BookView_SliderMinImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BookView_SliderMinImage@2x.png"; path = "USALan/Resource/AppImage/BookView_SliderMinImage@2x.png"; sourceTree = SOURCE_ROOT; };
+		0D6258B71906447600D764DE /* BookView_SliderThumbImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BookView_SliderThumbImage@2x.png"; path = "USALan/Resource/AppImage/BookView_SliderThumbImage@2x.png"; sourceTree = SOURCE_ROOT; };
+		0D6258BF1906458300D764DE /* glass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = glass.png; path = USALan/Resource/AppImage/glass.png; sourceTree = SOURCE_ROOT; };
 		0DAC5DE518D611D3003C6E30 /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
 		0DAC5DE618D611D3003C6E30 /* MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefresh.h; sourceTree = "<group>"; };
 		0DAC5DE718D611D3003C6E30 /* MJRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBaseView.h; sourceTree = "<group>"; };
@@ -107,7 +122,6 @@
 		0DAC5DF418D6125C003C6E30 /* ThumbViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThumbViewController.h; sourceTree = "<group>"; };
 		0DAC5DF518D6125C003C6E30 /* ThumbViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThumbViewController.m; sourceTree = "<group>"; };
 		0DD7A18219047F3E00100F6C /* VewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VewController.xib; sourceTree = "<group>"; };
-		0DD7A1841905698F00100F6C /* header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = header.png; path = USALan/Resource/AppImage/header.png; sourceTree = SOURCE_ROOT; };
 		0DD7A1861905CCEB00100F6C /* BookView_BackButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BookView_BackButton.png; path = USALan/Resource/AppImage/BookView_BackButton.png; sourceTree = SOURCE_ROOT; };
 		0DD7A1871905CCEB00100F6C /* BookView_BackButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BookView_BackButton@2x.png"; path = "USALan/Resource/AppImage/BookView_BackButton@2x.png"; sourceTree = SOURCE_ROOT; };
 		0DD7A18C1905D3E300100F6C /* VewControlleriPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VewControlleriPad.xib; path = ../Classes/VewControlleriPad.xib; sourceTree = "<group>"; };
@@ -258,13 +272,20 @@
 			children = (
 				0DD7A1861905CCEB00100F6C /* BookView_BackButton.png */,
 				0DD7A1871905CCEB00100F6C /* BookView_BackButton@2x.png */,
-				0DD7A1841905698F00100F6C /* header.png */,
 				0D446C2018FAF0F900A0F6B2 /* back.png */,
 				0D446C2118FAF0F900A0F6B2 /* list.png */,
 				0D446C2218FAF0F900A0F6B2 /* next.png */,
 				0D446C2318FAF0F900A0F6B2 /* previous.png */,
 				0D446C1A18FA708C00A0F6B2 /* Pause.png */,
 				0D446C1B18FA708C00A0F6B2 /* Play.png */,
+				0D6258B11906447600D764DE /* BookView_SliderBackground.png */,
+				0D6258B21906447600D764DE /* BookView_SliderBackground@2x.png */,
+				0D6258B31906447600D764DE /* BookView_SliderDarkImage.png */,
+				0D6258B41906447600D764DE /* BookView_SliderDarkImage@2x.png */,
+				0D6258B51906447600D764DE /* BookView_SliderMaxImage@2x.png */,
+				0D6258BF1906458300D764DE /* glass.png */,
+				0D6258B61906447600D764DE /* BookView_SliderMinImage@2x.png */,
+				0D6258B71906447600D764DE /* BookView_SliderThumbImage@2x.png */,
 			);
 			name = AppImage;
 			path = Image;
@@ -366,20 +387,27 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D6258BD1906447600D764DE /* BookView_SliderMinImage@2x.png in Resources */,
+				0D6258B91906447600D764DE /* BookView_SliderBackground@2x.png in Resources */,
 				0D250E6F189EA3520087E3D3 /* Main_iPad.storyboard in Resources */,
 				0DD7A18D1905D3E300100F6C /* VewControlleriPad.xib in Resources */,
 				0D446C2518FAF0F900A0F6B2 /* list.png in Resources */,
+				0D6258BC1906447600D764DE /* BookView_SliderMaxImage@2x.png in Resources */,
+				0D6258C01906458300D764DE /* glass.png in Resources */,
 				0D446C1E18FA708D00A0F6B2 /* Play.png in Resources */,
 				0D446C2618FAF0F900A0F6B2 /* next.png in Resources */,
-				0DD7A1851905698F00100F6C /* header.png in Resources */,
 				0D446C2718FAF0F900A0F6B2 /* previous.png in Resources */,
 				0DD7A1891905CCEB00100F6C /* BookView_BackButton@2x.png in Resources */,
 				0D446C2418FAF0F900A0F6B2 /* back.png in Resources */,
+				0D6258BE1906447600D764DE /* BookView_SliderThumbImage@2x.png in Resources */,
 				0D250E74189EA3520087E3D3 /* Images.xcassets in Resources */,
 				0D250ECA18A039730087E3D3 /* Data in Resources */,
 				0D250E6C189EA3520087E3D3 /* Main_iPhone.storyboard in Resources */,
 				0DD7A1881905CCEB00100F6C /* BookView_BackButton.png in Resources */,
+				0D6258BB1906447600D764DE /* BookView_SliderDarkImage@2x.png in Resources */,
+				0D6258BA1906447600D764DE /* BookView_SliderDarkImage.png in Resources */,
 				0D250E63189EA3520087E3D3 /* InfoPlist.strings in Resources */,
+				0D6258B81906447600D764DE /* BookView_SliderBackground.png in Resources */,
 				0DAC5DEF18D611D3003C6E30 /* MJRefresh.bundle in Resources */,
 				0D446C1D18FA708D00A0F6B2 /* Pause.png in Resources */,
 				0DD7A18319047F3E00100F6C /* VewController.xib in Resources */,
