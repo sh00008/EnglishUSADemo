@@ -109,17 +109,37 @@
     //self.sliderView.exclusiveTouch = YES;
     self.slider.maximumValue = self.totalCount;
     self.slider.minimumValue = 1;
+    self.slider.continuous = NO;
     self.slider.userInteractionEnabled = YES;
     [self showPageNumber];
 }
 
 - (IBAction)didChangedSlider:(id)sender {
-
+    self.currentNumber = self.slider.value;
+    [self showPageNumber];
+    [_csView removeFromSuperview];
+    self.csView = nil;
+    UIInterfaceOrientation or = [self interfaceOrientation];// [[UIDevice currentDevice] orientation];
+    CGRect f = [[UIScreen mainScreen] bounds];
+    CGRect rc =  UIInterfaceOrientationIsPortrait(or)? CGRectMake(0, 0, f.size.width, f.size.height) :  CGRectMake(0, 0, f.size.height, f.size.width);
+    _csView = [[CycleScrollView alloc] initWithFrame:CGRectMake(0, 0, rc.size.width, rc.size.height)];
+    _csView = [[CycleScrollView alloc] initWithFrame:CGRectMake(0, 0, rc.size.width, rc.size.height)];
+    _csView.delegate = self;
+    _csView.datasource = self;
+    [self.view addSubview:_csView];
+    self.csView = _csView;
+    self.csView.currentPage = self.currentNumber;
+    [self.csView reloadData];
+    [self.view bringSubviewToFront:self.toolBarView];
+    NSLog(@"didChangedSlider");
 }
 
 - (IBAction)changingSlider:(id)sender {
-    
+    NSLog(@"changingSlider");
+    self.currentNumber = self.slider.value;
+    [self showPageNumber];
 }
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];
