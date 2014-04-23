@@ -22,6 +22,7 @@
 @property (nonatomic,assign,setter = setDataource:) id<CycleScrollViewDatasource> datasource;
 @property (nonatomic,assign,setter = setDelegate:) id<CycleScrollViewDelegate> delegate;
 
+- (void)clearPage;
 - (void)reloadData;
 - (void)setViewContentAtIndex:(NSInteger)index animated:(BOOL)animated;
 - (UIView*)getCurrentView;

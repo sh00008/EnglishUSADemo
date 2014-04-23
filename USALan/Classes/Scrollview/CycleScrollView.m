@@ -28,6 +28,16 @@
     return self;
 }
 
+- (void)clearPage
+{
+    NSArray* array = _scrollView.subviews;
+    NSInteger count = array.count;
+    while (count != 0) {
+        UIView* v = [array objectAtIndex:count - 1];
+        [v removeFromSuperview];
+        count--;
+    }
+}
 - (void)reloadData
 {
     _totalPages = [_datasource numberOfPages];

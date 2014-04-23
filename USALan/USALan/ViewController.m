@@ -44,8 +44,6 @@
         //UIImage* im = [UIImage imageNamed:@"back.png"];
         //[_backButton setImage:im forState:UIControlStateNormal];
         [_backButton addTarget:self action:@selector(backToThumb) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:self.backButton];
-        
         _playButton = [[UIButton alloc] initWithFrame:CGRectMake((rc.size.width - (SIZEOFBUTTON + BUTTONOFFSET))/2, rc.size.height - (SIZEOFBUTTON + BUTTONOFFSET), SIZEOFBUTTON, SIZEOFBUTTON)];
         [_playButton setImage:[UIImage imageNamed:@"Play.png"] forState:UIControlStateNormal];
         [_playButton addTarget:self action:@selector(clickButton) forControlEvents:UIControlEventTouchUpInside];
@@ -95,8 +93,8 @@
         [self.slider setMaximumTrackTintColor:[UIColor colorWithRed:0.85f green:0.80f blue:0.76f alpha:1.00f]];
     }
     
-    [self.slider setThumbImage:[UIImage imageNamed:@"BookView_SliderThumbImage.png"] forState:UIControlStateNormal];
-    [self.slider setThumbImage:[UIImage imageNamed:@"BookView_SliderThumbImage.png"] forState:UIControlStateHighlighted];
+    //[self.slider setThumbImage:[UIImage imageNamed:@"BookView_SliderThumbImage@2x.png"] forState:UIControlStateNormal];
+    //[self.slider setThumbImage:[UIImage imageNamed:@"BookView_SliderThumbImage2x.png"] forState:UIControlStateHighlighted];
     
     if (IS_IPAD) {
         self.slider.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
@@ -109,7 +107,7 @@
     //self.sliderView.exclusiveTouch = YES;
     self.slider.maximumValue = self.totalCount;
     self.slider.minimumValue = 1;
-    self.slider.continuous = NO;
+    //self.slider.continuous = NO;
     self.slider.userInteractionEnabled = YES;
     [self showPageNumber];
 }
@@ -117,17 +115,7 @@
 - (IBAction)didChangedSlider:(id)sender {
     self.currentNumber = self.slider.value;
     [self showPageNumber];
-    [_csView removeFromSuperview];
-    self.csView = nil;
-    UIInterfaceOrientation or = [self interfaceOrientation];// [[UIDevice currentDevice] orientation];
-    CGRect f = [[UIScreen mainScreen] bounds];
-    CGRect rc =  UIInterfaceOrientationIsPortrait(or)? CGRectMake(0, 0, f.size.width, f.size.height) :  CGRectMake(0, 0, f.size.height, f.size.width);
-    _csView = [[CycleScrollView alloc] initWithFrame:CGRectMake(0, 0, rc.size.width, rc.size.height)];
-    _csView = [[CycleScrollView alloc] initWithFrame:CGRectMake(0, 0, rc.size.width, rc.size.height)];
-    _csView.delegate = self;
-    _csView.datasource = self;
-    [self.view addSubview:_csView];
-    self.csView = _csView;
+    [self.csView clearPage];
     self.csView.currentPage = self.currentNumber;
     [self.csView reloadData];
     [self.view bringSubviewToFront:self.toolBarView];
@@ -135,7 +123,6 @@
 }
 
 - (IBAction)changingSlider:(id)sender {
-    NSLog(@"changingSlider");
     self.currentNumber = self.slider.value;
     [self showPageNumber];
 }
