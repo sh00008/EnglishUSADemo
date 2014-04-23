@@ -55,6 +55,13 @@
 		0DD7A39B1907233400100F6C /* bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0DD7A39A1907233400100F6C /* bg.jpg */; };
 		0DD7A39D1907267E00100F6C /* main_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD7A39C1907267E00100F6C /* main_bg.png */; };
 		0DD7A39F190875BE00100F6C /* BookView_SliderTrack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD7A39E190875BE00100F6C /* BookView_SliderTrack@2x.png */; };
+		0DEA233819087D9600044F7E /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DEA233119087D9600044F7E /* Icon-72.png */; };
+		0DEA233919087D9600044F7E /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DEA233219087D9600044F7E /* Icon-72@2x.png */; };
+		0DEA233A19087D9600044F7E /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DEA233319087D9600044F7E /* Icon-Small.png */; };
+		0DEA233B19087D9600044F7E /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DEA233419087D9600044F7E /* Icon-Small-50.png */; };
+		0DEA233C19087D9600044F7E /* Icon-Small-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DEA233519087D9600044F7E /* Icon-Small-50@2x.png */; };
+		0DEA233D19087D9600044F7E /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DEA233619087D9600044F7E /* Icon-Small@2x.png */; };
+		0DEA233E19087D9600044F7E /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DEA233719087D9600044F7E /* Icon@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +138,13 @@
 		0DD7A39A1907233400100F6C /* bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = bg.jpg; path = USALan/Resource/AppImage/bg.jpg; sourceTree = SOURCE_ROOT; };
 		0DD7A39C1907267E00100F6C /* main_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = main_bg.png; path = USALan/Resource/AppImage/main_bg.png; sourceTree = SOURCE_ROOT; };
 		0DD7A39E190875BE00100F6C /* BookView_SliderTrack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BookView_SliderTrack@2x.png"; path = "USALan/Resource/AppImage/BookView_SliderTrack@2x.png"; sourceTree = SOURCE_ROOT; };
+		0DEA233119087D9600044F7E /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "USALan/Resource/AppImage/Icon-72.png"; sourceTree = SOURCE_ROOT; };
+		0DEA233219087D9600044F7E /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72@2x.png"; path = "USALan/Resource/AppImage/Icon-72@2x.png"; sourceTree = SOURCE_ROOT; };
+		0DEA233319087D9600044F7E /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small.png"; path = "USALan/Resource/AppImage/Icon-Small.png"; sourceTree = SOURCE_ROOT; };
+		0DEA233419087D9600044F7E /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-50.png"; path = "USALan/Resource/AppImage/Icon-Small-50.png"; sourceTree = SOURCE_ROOT; };
+		0DEA233519087D9600044F7E /* Icon-Small-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-50@2x.png"; path = "USALan/Resource/AppImage/Icon-Small-50@2x.png"; sourceTree = SOURCE_ROOT; };
+		0DEA233619087D9600044F7E /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small@2x.png"; path = "USALan/Resource/AppImage/Icon-Small@2x.png"; sourceTree = SOURCE_ROOT; };
+		0DEA233719087D9600044F7E /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "USALan/Resource/AppImage/Icon@2x.png"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,6 +290,13 @@
 		0D250ED618A44B540087E3D3 /* AppImage */ = {
 			isa = PBXGroup;
 			children = (
+				0DEA233119087D9600044F7E /* Icon-72.png */,
+				0DEA233219087D9600044F7E /* Icon-72@2x.png */,
+				0DEA233319087D9600044F7E /* Icon-Small.png */,
+				0DEA233419087D9600044F7E /* Icon-Small-50.png */,
+				0DEA233519087D9600044F7E /* Icon-Small-50@2x.png */,
+				0DEA233619087D9600044F7E /* Icon-Small@2x.png */,
+				0DEA233719087D9600044F7E /* Icon@2x.png */,
 				0DD7A39E190875BE00100F6C /* BookView_SliderTrack@2x.png */,
 				0DD7A39C1907267E00100F6C /* main_bg.png */,
 				0DD7A39A1907233400100F6C /* bg.jpg */,
@@ -401,19 +422,25 @@
 				0D250E6F189EA3520087E3D3 /* Main_iPad.storyboard in Resources */,
 				0DD7A18D1905D3E300100F6C /* VewControlleriPad.xib in Resources */,
 				0D446C2518FAF0F900A0F6B2 /* list.png in Resources */,
+				0DEA233819087D9600044F7E /* Icon-72.png in Resources */,
 				0D6258BC1906447600D764DE /* BookView_SliderMaxImage@2x.png in Resources */,
 				0D6258C01906458300D764DE /* glass.png in Resources */,
+				0DEA233A19087D9600044F7E /* Icon-Small.png in Resources */,
 				0D446C1E18FA708D00A0F6B2 /* Play.png in Resources */,
 				0D446C2618FAF0F900A0F6B2 /* next.png in Resources */,
 				0D446C2718FAF0F900A0F6B2 /* previous.png in Resources */,
 				0DD7A1891905CCEB00100F6C /* BookView_BackButton@2x.png in Resources */,
+				0DEA233E19087D9600044F7E /* Icon@2x.png in Resources */,
 				0D446C2418FAF0F900A0F6B2 /* back.png in Resources */,
 				0D6258BE1906447600D764DE /* BookView_SliderThumbImage@2x.png in Resources */,
 				0D250E74189EA3520087E3D3 /* Images.xcassets in Resources */,
 				0D250ECA18A039730087E3D3 /* Data in Resources */,
 				0D250E6C189EA3520087E3D3 /* Main_iPhone.storyboard in Resources */,
+				0DEA233C19087D9600044F7E /* Icon-Small-50@2x.png in Resources */,
 				0DD7A1881905CCEB00100F6C /* BookView_BackButton.png in Resources */,
 				0DD7A39D1907267E00100F6C /* main_bg.png in Resources */,
+				0DEA233D19087D9600044F7E /* Icon-Small@2x.png in Resources */,
+				0DEA233919087D9600044F7E /* Icon-72@2x.png in Resources */,
 				0D6258BB1906447600D764DE /* BookView_SliderDarkImage@2x.png in Resources */,
 				0D6258BA1906447600D764DE /* BookView_SliderDarkImage.png in Resources */,
 				0D250E63189EA3520087E3D3 /* InfoPlist.strings in Resources */,
@@ -421,6 +448,7 @@
 				0D6258B81906447600D764DE /* BookView_SliderBackground.png in Resources */,
 				0DAC5DEF18D611D3003C6E30 /* MJRefresh.bundle in Resources */,
 				0D446C1D18FA708D00A0F6B2 /* Pause.png in Resources */,
+				0DEA233B19087D9600044F7E /* Icon-Small-50.png in Resources */,
 				0DD7A18319047F3E00100F6C /* VewController.xib in Resources */,
 				0DD7A39F190875BE00100F6C /* BookView_SliderTrack@2x.png in Resources */,
 			);
