@@ -119,7 +119,6 @@
     self.csView.currentPage = self.currentNumber;
     [self.csView reloadData];
     [self.view bringSubviewToFront:self.toolBarView];
-    NSLog(@"didChangedSlider");
 }
 
 - (IBAction)changingSlider:(id)sender {
@@ -281,7 +280,6 @@
         if (lessonView != nil) {
             lessonView.timeInterval = inter;
         }
-        NSLog(@"%@", lessonView.srcLabel.text);
         if (self.buttonStatus ==
             0) {
             // PLAY

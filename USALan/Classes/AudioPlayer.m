@@ -11,7 +11,6 @@
 @implementation AudioPlayer
 void interruptionListenerCallback (void *userData, UInt32 interruptionState)
 {
-	NSLog(@"interruptionListenerCallback");
 }
 
 

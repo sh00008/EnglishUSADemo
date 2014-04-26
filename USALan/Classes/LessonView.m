@@ -79,7 +79,6 @@
        if ([SentenceBreaker isPunct:ch]) {
            NSInteger location = posFrom == 0 ? posFrom : (posFrom+1);
             NSInteger length = i - location ;
-            NSLog(@"%@", [text substringWithRange:NSMakeRange(location, length)]);
             if (length > 1) {
                 NSMutableDictionary* posDic = [[NSMutableDictionary alloc] init];
                 [posDic setObject:[NSNumber numberWithInt:location] forKey:@"location"];

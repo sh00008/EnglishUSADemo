@@ -107,7 +107,6 @@ NSString *const MJCollectionViewCellIdentifier = @"Cell";
 #pragma mark 开始进入刷新状态
 - (void)refreshViewBeginRefreshing:(MJRefreshBaseView *)refreshView
 {
-    NSLog(@"%@----开始进入刷新状态", refreshView.class);
     
     // 1.添加假数据
     if ([_fakeColor count] < [_dataArray count] && _fakeColor.count > 0) {
