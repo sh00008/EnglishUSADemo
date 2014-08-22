@@ -30,7 +30,7 @@
         [self addSubview:_textView];
         _srcLabel = [[UILabel alloc] initWithFrame:CGRectMake(0 , SIZEOFBUTTON, _textView.frame.size.width, _textView.frame.size.height - SIZEOFBUTTON)];
         _srcLabel.numberOfLines = 0;
-        [_srcLabel setFont:[UIFont fontWithName:@"Helvetica" size:IS_IPAD ? 44 : 18]];
+        [_srcLabel setFont:[UIFont fontWithName:@"Helvetica" size:IS_IPAD ? 32 : 14]];
         _srcLabel.textAlignment = NSTextAlignmentCenter;
         _srcLabel.backgroundColor = [UIColor clearColor];
         [_textView addSubview:_srcLabel];
@@ -42,7 +42,7 @@
 
 - (void)setTimeInterval:(NSTimeInterval)time {
     _timeInterval = time;
-    self.dxInter = self.timeInterval / [_rangeArray count];
+    self.dxInter = (CGFloat)_timeInterval / (CGFloat)([_rangeArray count]);
 }
 
 - (void)setLessonImage:(UIImage*)image {
@@ -74,9 +74,11 @@
     self.srcLabel.frame = CGRectMake((self.textView.frame.size.width - self.srcLabel.frame.size.width ) / 2, (self.textView.frame.size.height - self.srcLabel.frame.size.height ) / 2, self.srcLabel.frame.size.width, self.srcLabel.frame.size.height);
     _rangeArray = [[NSMutableArray alloc] init];
     NSInteger posFrom = 0;
+    BOOL bhasPunct = NO;
     for (NSInteger i = 0; i < text.length; i++) {
         unichar ch = [text characterAtIndex:i];
        if ([SentenceBreaker isPunct:ch]) {
+           bhasPunct = YES;
            NSInteger location = posFrom == 0 ? posFrom : (posFrom+1);
             NSInteger length = i - location ;
             if (length > 1) {
@@ -87,6 +89,14 @@
             }
             posFrom = i;
          }
+    }
+    if (!bhasPunct && text.length > 0) {
+        NSInteger location = 0;
+        NSInteger length = text.length ;
+        NSMutableDictionary* posDic = [[NSMutableDictionary alloc] init];
+        [posDic setObject:[NSNumber numberWithInt:location] forKey:@"location"];
+        [posDic setObject:[NSNumber numberWithInt:length] forKey:@"length"];
+        [_rangeArray addObject:posDic];
     }
 }
 
@@ -102,7 +112,7 @@
 - (void)startAnimation {
     CGFloat x= 0;
     for (; self.currentPos < [_rangeArray count]; self.currentPos ++) {
-       [self performSelector:@selector(highligthPos:) withObject:[NSNumber numberWithInt:self.currentPos] afterDelay:self.currentPos];
+       [self performSelector:@selector(highligthPos:) withObject:[NSNumber numberWithInt:self.currentPos] afterDelay:x];
         x = (self.currentPos + 1) * self.dxInter;
      }
  }
@@ -116,13 +126,13 @@
             NSInteger location = [[posDic objectForKey:@"location"] intValue];
             NSInteger length = [[posDic objectForKey:@"length"] intValue];
             CGFloat dx =self.timeInterval / ([_rangeArray count] * length);
-                                             CGFloat x = 0;
-            for (NSInteger i = 1; i <= length; i++) {
+             CGFloat x = 0;
+            for (NSInteger i = 0; i <= length; i++) {
                 NSMutableDictionary* singlePos = [[NSMutableDictionary alloc] initWithCapacity:2];
                 [singlePos setObject:[NSNumber numberWithInt:location] forKey:@"location"];
                 [singlePos setObject:[NSNumber numberWithInt:i] forKey:@"length"];
                 [self performSelector:@selector(addAttributToRange:) withObject:singlePos afterDelay:x];
-                x = dx;
+                x = dx- 0.5;
             }
             /*
             self.attributString =
@@ -149,15 +159,24 @@
 - (void)addAttributToRange:(NSMutableDictionary*)dic {
     NSInteger location = [[dic objectForKey:@"location"] intValue];
     NSInteger length = [[dic objectForKey:@"length"] intValue];
-    self.attributString =
+    if (self.srcLabel.text == nil) {
+        return;
+    }
+    NSMutableAttributedString* newAttribute =
     [[NSMutableAttributedString alloc] initWithString:self.srcLabel.text];
-    if (length < self.attributString.length  && (location < self.attributString.length)) {
-        [self.attributString addAttribute:NSBackgroundColorAttributeName
+    if (length < newAttribute.length  && (location < newAttribute.length)) {
+        [newAttribute addAttribute:NSBackgroundColorAttributeName
                                     value:[UIColor colorWithRed:232.0/255.0 green:169.0/255.0 blue:221.0 alpha:1.0]
                                     range:NSMakeRange(location, length)];
         
     }
-    [self.srcLabel setAttributedText:self.attributString];
+    CATransition *transition = [CATransition new];
+    transition.delegate = self;
+    transition.type = kCATransitionFromLeft;
+    transition.duration = self.dxInter;
+    [self.srcLabel setAttributedText:newAttribute];
+    //self.attributString = newAttribute;
+   [self.srcLabel.layer addAnimation:transition forKey:nil];
    // [self.srcLabel setNeedsDisplay];
  
 }
@@ -167,7 +186,14 @@
 }
 
 - (void)stop {
-   
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    if (self.srcLabel.text == nil) {
+        return;
+    }
+    self.attributString =
+    [[NSMutableAttributedString alloc] initWithString:self.srcLabel.text];
+    [self.srcLabel setAttributedText:self.attributString];
+    
 }
 
 @end

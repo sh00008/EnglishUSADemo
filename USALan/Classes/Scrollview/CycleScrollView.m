@@ -23,7 +23,7 @@
         self.backgroundColor = [UIColor clearColor];
         [self addSubview:_scrollView];
         
-        _curPage = 0;
+        _currentPage = 0;
     }
     return self;
 }
@@ -53,9 +53,23 @@
         return;
     }
     NSInteger nSize = 3;
-    UIView* v = [_datasource pageAtIndex:0];
-    if (v != nil) {
-        // previous not nil
+    BOOL bFirst = [_datasource firstPage];
+    BOOL bLast = [_datasource lastPage];
+    if (bFirst) {
+        nSize = 2;
+        UIView* v = [_datasource pageAtIndex:1];
+        _scrollView.contentSize = CGSizeMake(self.bounds.size.width * nSize, self.bounds.size.height);
+       v.frame = CGRectMake(0, _scrollView.frame.origin.y, _scrollView.frame.size.width, _scrollView.frame.size.height);
+        [_scrollView addSubview:v];
+        v.tag = KCURRENT;
+        v = [_datasource pageAtIndex:2];
+        v.frame = CGRectMake(_scrollView.frame.size.width, _scrollView.frame.origin.y, _scrollView.frame.size.width, _scrollView.frame.size.height);
+        [_scrollView addSubview:v];
+        v.tag = KNEXT;
+        [self setViewContentAtIndex:0 animated:NO];
+    } else if (bLast) {
+        nSize = 2;
+       UIView* v = [_datasource pageAtIndex:0];
         _scrollView.contentSize = CGSizeMake(self.bounds.size.width * nSize, self.bounds.size.height);
         [_scrollView addSubview:v];
         v.tag = KPREVIOUS;
@@ -64,21 +78,37 @@
         v.frame = CGRectMake(_scrollView.frame.size.width, _scrollView.frame.origin.y, _scrollView.frame.size.width, _scrollView.frame.size.height);
         [_scrollView addSubview:v];
         v.tag = KCURRENT;
-        v = [_datasource pageAtIndex:2];
-        v.frame = CGRectMake(_scrollView.frame.size.width * 2, _scrollView.frame.origin.y, _scrollView.frame.size.width, _scrollView.frame.size.height);
-        [_scrollView addSubview:v];
-        v.tag = KNEXT;
         [self setViewContentAtIndex:1 animated:NO];
+     
     } else {
-        _scrollView.contentSize = CGSizeMake(self.bounds.size.width * 2, self.bounds.size.height);
-        v = [_datasource pageAtIndex:1];
-        [_scrollView addSubview:v];
-        v.tag = KCURRENT;
-        v = [_datasource pageAtIndex:2];
-        v.frame = CGRectMake(_scrollView.frame.size.width, _scrollView.frame.origin.y, _scrollView.frame.size.width, _scrollView.frame.size.height);
-        [_scrollView addSubview:v];
-        v.tag = KNEXT;
-        [self setViewContentAtIndex:0 animated:NO];
+        UIView* v = [_datasource pageAtIndex:0];
+        if (v != nil) {
+            // previous not nil
+            _scrollView.contentSize = CGSizeMake(self.bounds.size.width * nSize, self.bounds.size.height);
+            [_scrollView addSubview:v];
+            v.tag = KPREVIOUS;
+            
+            v = [_datasource pageAtIndex:1];
+            v.frame = CGRectMake(_scrollView.frame.size.width, _scrollView.frame.origin.y, _scrollView.frame.size.width, _scrollView.frame.size.height);
+            [_scrollView addSubview:v];
+            v.tag = KCURRENT;
+            v = [_datasource pageAtIndex:2];
+            v.frame = CGRectMake(_scrollView.frame.size.width * 2, _scrollView.frame.origin.y, _scrollView.frame.size.width, _scrollView.frame.size.height);
+            [_scrollView addSubview:v];
+            v.tag = KNEXT;
+            [self setViewContentAtIndex:1 animated:NO];
+        } else {
+            _scrollView.contentSize = CGSizeMake(self.bounds.size.width * 2, self.bounds.size.height);
+            v = [_datasource pageAtIndex:1];
+            [_scrollView addSubview:v];
+            v.tag = KCURRENT;
+            v = [_datasource pageAtIndex:2];
+            v.frame = CGRectMake(_scrollView.frame.size.width, _scrollView.frame.origin.y, _scrollView.frame.size.width, _scrollView.frame.size.height);
+            [_scrollView addSubview:v];
+            v.tag = KNEXT;
+            [self setViewContentAtIndex:0 animated:NO];
+        }
+
     }
 }
 
@@ -237,9 +267,9 @@
 }
 
 - (void)setPreviousPage {
-    if ([_datasource firstPage]) {
-        return;
-    }
+    //if ([_datasource firstPage]) {
+    //    return;
+    //}
     UIView* p = [_scrollView viewWithTag:KNEXT];
     [p removeFromSuperview];
     
@@ -277,6 +307,10 @@
 }
 
 #pragma mark - UIScrollViewDelegate
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    [_datasource willDragging];
+}
+
 - (void)scrollViewDidScroll:(UIScrollView *)aScrollView {
    // int x = aScrollView.contentOffset.x;
     
@@ -285,13 +319,22 @@
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)aScrollView {
     int x = aScrollView.contentOffset.x;
     _currentPage = x / _scrollView.frame.size.width;
+    BOOL bFirstPage = [_datasource firstPage];
+    BOOL bLastPage = [_datasource lastPage];
+    if (bFirstPage && _currentPage == 1) {
+        _currentPage = 2;
+    }
+    
+    if (bLastPage && _currentPage == 1) {
+        _currentPage = 0;
+    }
+    
+    [_datasource didTurnPage:_currentPage];
     if (_currentPage == 2) {
         [self setNextPage];
     } else if (_currentPage == 0) {
         [self setPreviousPage];
-    }
-    [_datasource didTurnPage:_currentPage];
-    //[_scrollView setContentOffset:CGPointMake(_scrollView.frame.size.width, 0) animated:YES];
+    }     //[_scrollView setContentOffset:CGPointMake(_scrollView.frame.size.width, 0) animated:YES];
     
 }
 

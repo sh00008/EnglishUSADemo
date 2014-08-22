@@ -23,4 +23,5 @@
 - (void)setLessonText:(NSString*)text;
 - (void)startAnimation;
 - (void)pause;
+- (void)stop;
 @end

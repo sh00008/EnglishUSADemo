@@ -40,6 +40,7 @@
     [super setFrame:frame];
     
     CGFloat h = frame.size.height;
+    _statusLabel.textColor = [UIColor whiteColor];
     if (_statusLabel.center.y != h * 0.5) {
         CGFloat w = frame.size.width;
         _statusLabel.center = CGPointMake(w * 0.5, h * 0.5);

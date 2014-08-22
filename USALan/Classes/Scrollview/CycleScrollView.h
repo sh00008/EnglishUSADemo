@@ -11,14 +11,13 @@
     UIPageControl *_pageControl;
     
     NSInteger _totalPages;
-    NSInteger _curPage;
+    NSInteger _currentPage;
     
     NSMutableArray *_curViews;
 }
 
 @property (nonatomic,readonly) UIScrollView *scrollView;
 @property (nonatomic,readonly) UIPageControl *pageControl;
-@property (nonatomic,assign) NSInteger currentPage;
 @property (nonatomic,assign,setter = setDataource:) id<CycleScrollViewDatasource> datasource;
 @property (nonatomic,assign,setter = setDelegate:) id<CycleScrollViewDelegate> delegate;
 
@@ -45,4 +44,5 @@
 - (void)didTurnPage:(NSInteger)page;
 - (BOOL)firstPage;
 - (BOOL)lastPage;
+- (void)willDragging;
 @end

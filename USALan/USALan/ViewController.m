@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "LessonView.h"
 #import "AudioPlayer.h"
+#import "FilePathGet.h"
 @interface ViewController ()
 @property CycleScrollView* csView;
 @property NSMutableArray* dataArray;
@@ -38,7 +39,6 @@
         [self.view addSubview:_csView];
         [self.view bringSubviewToFront:self.toolBarView];
         self.csView = _csView;
-        self.csView.currentPage = self.currentNumber;
         [self.csView reloadData];
         //_backButton = [[UIButton alloc] initWithFrame:CGRectMake(2, 20, SIZEOFBUTTON, SIZEOFBUTTON)];
         //UIImage* im = [UIImage imageNamed:@"back.png"];
@@ -113,10 +113,10 @@
 }
 
 - (IBAction)didChangedSlider:(id)sender {
+    [self stop];
     self.currentNumber = self.slider.value;
     [self showPageNumber];
     [self.csView clearPage];
-    self.csView.currentPage = self.currentNumber;
     [self.csView reloadData];
     [self.view bringSubviewToFront:self.toolBarView];
 }
@@ -180,37 +180,13 @@
     }
     UIImage* lessonImage = [UIImage imageWithContentsOfFile:[imagePath stringByAppendingString:@".jpg"]];
     [lessonView setLessonImage:lessonImage];
-    if (IS_SAME) {
-        NSString* lessonContent =  [NSString stringWithContentsOfFile:[imagePath stringByAppendingString:@".txt"] encoding: NSASCIIStringEncoding error:nil];
-        [lessonView setLessonText:lessonContent];
-        
-    } else {
-        NSRange range = [imagePath rangeOfString:@"/" options:NSBackwardsSearch];
-        if (range.location != NSNotFound) {
-            NSString* filename = [imagePath substringFromIndex:range.location+1];
-            NSRange headerrange = [filename rangeOfString:HEADERSTRING];
-            if (headerrange.location != NSNotFound) {
-                NSString* textName = [filename substringFromIndex:headerrange.location+headerrange.length];
-                NSRange chRange = [textName rangeOfString:@"-"];
-                if (chRange.location != NSNotFound) {
-                    NSInteger first = [[textName substringToIndex:chRange.location] integerValue];
-                    NSInteger second = [[textName substringFromIndex:(chRange.location+1)] integerValue];
-                    NSString* textfilename = [NSString stringWithFormat:@"%d-%d", first - RLATIONOFFSET, second];
-                    NSString* textPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"%@", @"/Data/Text/"];
-                    
-                    NSString* lessonContent =  [NSString stringWithContentsOfFile:[textPath stringByAppendingFormat:@"%@.txt", textfilename] encoding: NSASCIIStringEncoding error:nil];
-                    [lessonView setLessonText:lessonContent];
-                    
-                }
-            }
-        }
-        
-    }
-   return lessonView;
+    NSString* lessonContent = [FilePathGet getTextFileContent:imagePath];
+    [lessonView setLessonText:lessonContent];
+    return lessonView;
 }
 
 - (void)showPageNumber {
-    _pageNumberLabel.text = [NSString stringWithFormat:@"%d / %d", self.currentNumber, self.totalCount];
+    _pageNumberLabel.text = [NSString stringWithFormat:@"%ld / %ld", self.currentNumber, (long)self.totalCount];
     self.slider.value = self.currentNumber;
 }
 
@@ -223,7 +199,8 @@
         self.currentNumber++;
         [self showPageNumber];
 
-    }}
+    }
+}
 
 - (BOOL)firstPage {
     return self.currentNumber == 1;
@@ -233,45 +210,28 @@
     return self.currentNumber == self.totalCount;
 }
 
+- (void)willDragging {
+    [self stop];
+}
+
 - (void)backToThumb {
+    [self stop];
     [self dismissViewControllerAnimated:YES completion:^(void ) {}];
 }
 
 - (void)clickPreviousButon {
+    [self stop];
     [self.csView scrollToPrevious];
 }
 
 - (void)clickNextButton {
+    [self stop];
     [self.csView scrollToNext];
 
 }
 - (void)clickButton {
-   self.pagePath = [self.delegate getDataPathWithOutSuffix:self.currentNumber];
-    if (IS_SAME) {
-        NSString* path =  [NSString stringWithContentsOfFile:[self.pagePath stringByAppendingString:@".mp3"] encoding: NSASCIIStringEncoding error:nil];
-        self.player.path = path;
-       
-    } else {
-        NSRange range = [self.pagePath rangeOfString:@"/" options:NSBackwardsSearch];
-        if (range.location != NSNotFound) {
-            NSString* filename = [self.pagePath substringFromIndex:range.location+1];
-            NSRange headerrange = [filename rangeOfString:HEADERSTRING];
-            if (headerrange.location != NSNotFound) {
-                NSString* textName = [filename substringFromIndex:headerrange.location+headerrange.length];
-                NSRange chRange = [textName rangeOfString:@"-"];
-                if (chRange.location != NSNotFound) {
-                    NSInteger first = [[textName substringToIndex:chRange.location] integerValue];
-                    NSInteger second = [[textName substringFromIndex:(chRange.location+1)] integerValue];
-                    NSString* textfilename = [NSString stringWithFormat:@"%d-%d", first - RLATIONOFFSET, second];
-                    NSString* textPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"%@", @"/Data/Voice/"];
-                    NSString* path = [textPath stringByAppendingFormat:@"%@.mp3", textfilename];
-                    self.player.path = path;
-                    
-                }
-            }
-        }
-        
-    }
+    self.pagePath = [self.delegate getDataPathWithOutSuffix:self.currentNumber];
+    self.player.path = [FilePathGet getmp3FilePath:self.pagePath];
     if (self.player.path == nil) {
         return;
     }
@@ -285,8 +245,8 @@
             // PLAY
             self.buttonStatus = 1;
             [self.playButton setImage:[UIImage imageNamed:@"Pause.png"] forState:UIControlStateNormal];
-            [self.player play];
             [lessonView startAnimation];
+            [self.player play];
         } else {
             // PAUSE
             self.buttonStatus = 0;
@@ -300,7 +260,7 @@
 - (void)doNextPlay {
     if (self.currentNumber != self.totalCount) {
         [self.csView scrollToNext];
-        [self performSelector:@selector(clickButton) withObject:nil afterDelay:0.5];
+        [self performSelector:@selector(clickButton) withObject:nil afterDelay:2.0];
     }
 
 }
@@ -308,8 +268,17 @@
 - (void)didPlayNotification:(NSNotification*)object {
     self.buttonStatus = 0;
     [_playButton setImage:[UIImage imageNamed:@"Play.png"] forState:UIControlStateNormal];
-    [self performSelector:@selector(doNextPlay) withObject:nil afterDelay:1.0];
+    [self performSelector:@selector(doNextPlay) withObject:nil afterDelay:2.0];
 
  }
+
+- (void)stop {
+    self.buttonStatus = 0;
+    [_playButton setImage:[UIImage imageNamed:@"Play.png"] forState:UIControlStateNormal];
+    [self.player stop];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    LessonView* lessonView = (LessonView*)[self.csView getCurrentView];
+    [lessonView stop];
+}
 
 @end
