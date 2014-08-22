@@ -26,6 +26,7 @@
 		0D250ECA18A039730087E3D3 /* Data in Resources */ = {isa = PBXBuildFile; fileRef = 0D250EC918A039730087E3D3 /* Data */; };
 		0D250ECD18A03C9F0087E3D3 /* SentenceBreaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D250ECC18A03C9F0087E3D3 /* SentenceBreaker.m */; };
 		0D250ED318A28E050087E3D3 /* LessonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D250ED218A28E050087E3D3 /* LessonView.m */; };
+		0D338E3019A7D2E70008E609 /* FilePathGet.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D338E2F19A7D2E70008E609 /* FilePathGet.m */; };
 		0D446C1D18FA708D00A0F6B2 /* Pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D446C1A18FA708C00A0F6B2 /* Pause.png */; };
 		0D446C1E18FA708D00A0F6B2 /* Play.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D446C1B18FA708C00A0F6B2 /* Play.png */; };
 		0D446C2418FAF0F900A0F6B2 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D446C2018FAF0F900A0F6B2 /* back.png */; };
@@ -58,7 +59,6 @@
 		0DEA2369190B11E200044F7E /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DEA2355190B11E200044F7E /* Default.png */; };
 		0DEA236A190B11E200044F7E /* Default-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DEA2356190B11E200044F7E /* Default-Landscape.png */; };
 		0DEA236B190B11E200044F7E /* Default-Landscape@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DEA2357190B11E200044F7E /* Default-Landscape@2x.png */; };
-		0DEA236D190B11E200044F7E /* Icon-114.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DEA2359190B11E200044F7E /* Icon-114.png */; };
 		0DEA236E190B11E200044F7E /* Icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DEA235A190B11E200044F7E /* Icon-120.png */; };
 		0DEA236F190B11E200044F7E /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DEA235B190B11E200044F7E /* Icon-72.png */; };
 		0DEA2370190B11E200044F7E /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DEA235C190B11E200044F7E /* Icon-72@2x.png */; };
@@ -117,6 +117,8 @@
 		0D250ECC18A03C9F0087E3D3 /* SentenceBreaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SentenceBreaker.m; sourceTree = "<group>"; };
 		0D250ED118A28E050087E3D3 /* LessonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonView.h; sourceTree = "<group>"; };
 		0D250ED218A28E050087E3D3 /* LessonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonView.m; sourceTree = "<group>"; };
+		0D338E2E19A7D2E70008E609 /* FilePathGet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilePathGet.h; sourceTree = "<group>"; };
+		0D338E2F19A7D2E70008E609 /* FilePathGet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilePathGet.m; sourceTree = "<group>"; };
 		0D446C1A18FA708C00A0F6B2 /* Pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Pause.png; path = USALan/Resource/AppImage/Pause.png; sourceTree = SOURCE_ROOT; };
 		0D446C1B18FA708C00A0F6B2 /* Play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Play.png; path = USALan/Resource/AppImage/Play.png; sourceTree = SOURCE_ROOT; };
 		0D446C2018FAF0F900A0F6B2 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = back.png; path = USALan/Resource/AppImage/back.png; sourceTree = SOURCE_ROOT; };
@@ -156,7 +158,6 @@
 		0DEA2355190B11E200044F7E /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		0DEA2356190B11E200044F7E /* Default-Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape.png"; sourceTree = "<group>"; };
 		0DEA2357190B11E200044F7E /* Default-Landscape@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x.png"; sourceTree = "<group>"; };
-		0DEA2359190B11E200044F7E /* Icon-114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-114.png"; sourceTree = "<group>"; };
 		0DEA235A190B11E200044F7E /* Icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-120.png"; sourceTree = "<group>"; };
 		0DEA235B190B11E200044F7E /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		0DEA235C190B11E200044F7E /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
@@ -290,6 +291,8 @@
 				0D250ECC18A03C9F0087E3D3 /* SentenceBreaker.m */,
 				0D250ED118A28E050087E3D3 /* LessonView.h */,
 				0D250ED218A28E050087E3D3 /* LessonView.m */,
+				0D338E2E19A7D2E70008E609 /* FilePathGet.h */,
+				0D338E2F19A7D2E70008E609 /* FilePathGet.m */,
 				0D4DA11918A6103D00B31F88 /* AudioPlayer.h */,
 				0D4DA11A18A6103D00B31F88 /* AudioPlayer.m */,
 				0DAC5DF418D6125C003C6E30 /* ThumbViewController.h */,
@@ -373,7 +376,6 @@
 				0DEA2355190B11E200044F7E /* Default.png */,
 				0DEA2356190B11E200044F7E /* Default-Landscape.png */,
 				0DEA2357190B11E200044F7E /* Default-Landscape@2x.png */,
-				0DEA2359190B11E200044F7E /* Icon-114.png */,
 				0DEA235A190B11E200044F7E /* Icon-120.png */,
 				0DEA235B190B11E200044F7E /* Icon-72.png */,
 				0DEA235C190B11E200044F7E /* Icon-72@2x.png */,
@@ -478,7 +480,6 @@
 				0DEA237C190B13EF00044F7E /* Default~iphone.png in Resources */,
 				0DEA2372190B11E200044F7E /* Icon-76@2x.png in Resources */,
 				0DEA237A190B11E200044F7E /* Icon@2x.png in Resources */,
-				0DEA236D190B11E200044F7E /* Icon-114.png in Resources */,
 				0DEA2370190B11E200044F7E /* Icon-72@2x.png in Resources */,
 				0D6258BD1906447600D764DE /* BookView_SliderMinImage@2x.png in Resources */,
 				0D6258B91906447600D764DE /* BookView_SliderBackground@2x.png in Resources */,
@@ -542,6 +543,7 @@
 				0D250EA018A02DF90087E3D3 /* CycleScrollView.m in Sources */,
 				0DAC5DF318D611D3003C6E30 /* MJRefreshHeaderView.m in Sources */,
 				0DAC5DF618D6125C003C6E30 /* ThumbViewController.m in Sources */,
+				0D338E3019A7D2E70008E609 /* FilePathGet.m in Sources */,
 				0DAC5DF218D611D3003C6E30 /* MJRefreshFooterView.m in Sources */,
 				0DAC5DF018D611D3003C6E30 /* MJRefreshBaseView.m in Sources */,
 				0D4DA11B18A6103D00B31F88 /* AudioPlayer.m in Sources */,
@@ -643,6 +645,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "232984e3-5533-4818-aebc-4821af4af646";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -665,8 +668,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: zuqing hu (FJ3FMY7BRU)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: zuqing hu (FJ3FMY7BRU)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: zuqing hu (8H8L77P3QP)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -677,7 +680,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
-				PROVISIONING_PROFILE = "9FAABC52-312C-4B15-B851-AA3B6D3448CB";
+				PROVISIONING_PROFILE = "232984e3-5533-4818-aebc-4821af4af646";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -694,7 +697,7 @@
 				INFOPLIST_FILE = "USALan/USALan-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9FAABC52-312C-4B15-B851-AA3B6D3448CB";
+				PROVISIONING_PROFILE = "232984e3-5533-4818-aebc-4821af4af646";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -702,14 +705,14 @@
 		0D250E8C189EA3520087E3D3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: zuqing hu (FJ3FMY7BRU)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: zuqing hu (FJ3FMY7BRU)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: zuqing hu (8H8L77P3QP)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: zuqing hu (8H8L77P3QP)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "USALan/USALan-Prefix.pch";
 				INFOPLIST_FILE = "USALan/USALan-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9FAABC52-312C-4B15-B851-AA3B6D3448CB";
+				PROVISIONING_PROFILE = "232984e3-5533-4818-aebc-4821af4af646";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
