@@ -25,4 +25,5 @@ DerivedData
 *.xcscheme
 
 *.xcuserstate
-Resource /Data/*
+Data/Image/*
+USALan/USALan/Resource/Data/*
