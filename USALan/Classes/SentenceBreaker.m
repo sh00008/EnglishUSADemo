@@ -35,10 +35,7 @@
 		}
 	}
     
-    if ([SentenceBreaker isSpecial:_wc]) {
-        return YES;
-    }
-	return NO;
+    return [SentenceBreaker isSpecial:_wc];
 }
 
 + (BOOL)isSpecial:(wint_t)_wc {
