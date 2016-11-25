@@ -93,8 +93,6 @@
         [self.slider setMaximumTrackTintColor:[UIColor colorWithRed:0.85f green:0.80f blue:0.76f alpha:1.00f]];
     }
     
-    //[self.slider setThumbImage:[UIImage imageNamed:@"BookView_SliderThumbImage@2x.png"] forState:UIControlStateNormal];
-    //[self.slider setThumbImage:[UIImage imageNamed:@"BookView_SliderThumbImage2x.png"] forState:UIControlStateHighlighted];
     
     if (IS_IPAD) {
         self.slider.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
